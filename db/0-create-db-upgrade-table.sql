@@ -1,0 +1,1 @@
+CREATE TABLE db_upgrade (file varchar(255) primary key, applied datetime);
