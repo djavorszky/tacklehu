@@ -11,6 +11,8 @@ class Config {
 
 	private static $mdl_icons = "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+	private static $mdl_fonts = "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
 	// CDN settings
 	private static $use_cdn = true;
 
@@ -62,6 +64,10 @@ class Config {
 
 	static function getMaterialIcons() {
 		return self::$mdl_icons;
+	}
+
+	static function getMaterialFonts() {
+		return self::$mdl_fonts;
 	}
 
 	static function useCDN() {
