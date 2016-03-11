@@ -16,6 +16,7 @@ class DBUpgrader {
 				$applied[] = $row->file;
 			}
 		}
+
 		$files = scandir(Config::getRootDir() . "/db");
 
 		foreach ($files as $file) {

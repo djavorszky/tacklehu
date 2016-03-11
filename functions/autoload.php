@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($name) {
-    if (debug()) echo "Loading class $name.\n";
+    if (debug()) debug_echo("Loading class $name.");
     require_once("classes/$name.php");
 });
 
