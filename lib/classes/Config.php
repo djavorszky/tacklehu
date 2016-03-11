@@ -3,8 +3,8 @@
 class Config {
 
 	// Material locations
-	private static $mdl_js_local = "res/material.min.js";
-	private static $mdl_css_local = "res/material.min.css";
+	private static $mdl_js_local = "res/material/material.min.js";
+	private static $mdl_css_local = "res/material/material.min.css";
 
 	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
 	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-pink.min.css";
