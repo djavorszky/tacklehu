@@ -9,7 +9,7 @@ class Config {
 	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
 	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-pink.min.css";
 
-	private static $mdl_fonts = "https://fonts.googleapis.com/icon?family=Material+Icons";
+	private static $mdl_icons = "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 	// CDN settings
 	private static $use_cdn = true;
@@ -60,8 +60,8 @@ class Config {
 		}
 	}
 
-	static function getMaterialFonts() {
-		return self::$mdl_fonts;
+	static function getMaterialIcons() {
+		return self::$mdl_icons;
 	}
 
 	static function useCDN() {

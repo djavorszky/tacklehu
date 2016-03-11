@@ -7,7 +7,7 @@ require_once("lib/init.php");
 	<title>tackle.hu</title>
 	<link rel="stylesheet" href="<?php echo Config::getMaterialCSS() ?>">
 	<script src="<?php echo Config::getMaterialJS() ?>"></script>
-	<link rel="stylesheet" href="<?php echo Config::getMaterialFonts() ?>">
+	<link rel="stylesheet" href="<?php echo Config::getMaterialIcons() ?>">
 	
 </head>
 <body>
