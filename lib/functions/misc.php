@@ -9,7 +9,6 @@
 	}
 
 	function die_hard($message) {
-		echo $message;
 		error_log($message);
 		die();
 	}

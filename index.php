@@ -5,7 +5,7 @@ require_once("lib/init.php");
 
 <html>
 <head>
-	<title>tackle.hu</title>
+	<title><?php echo R::lang("site_title_key") ?></title>
 	<script src="<?php echo Config::getMaterialJS() ?>"></script>
 	<link rel="stylesheet" href="<?php echo Config::getMaterialCSS() ?>">
 	<link rel="stylesheet" href="<?php echo Config::getMaterialIcons() ?>">
@@ -20,9 +20,9 @@ require_once("lib/init.php");
 				<div class="mdl-cell mdl-cell--4-col">Content</div>
 				<div class="mdl-cell mdl-cell--4-col">goes</div>
 				<div class="mdl-cell mdl-cell--4-col">stuff.
-
 				</div>
 			</div>
+		</main>
 	</div>
 </body>
 </html>

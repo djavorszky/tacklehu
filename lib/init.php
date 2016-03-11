@@ -12,4 +12,6 @@ DB::init();
 
 DBUpgrader::checkTables();
 
+R::init();
+
 ?>
