@@ -1,6 +1,6 @@
 <?php
 
-$debug = true;
+$debug = false;
 
 require_once("functions/autoload.php");
 require_once("functions/misc.php");

@@ -4,17 +4,19 @@ class Config {
 
 	// Material locations
 	private static $mdl_js_local = "res/material/material.min.js";
-	private static $mdl_css_local = "res/material/material.min.css";
-
 	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
+
+	private static $mdl_css_local = "res/material/material.min.css";
 	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-pink.min.css";
 
-	private static $mdl_icons = "https://fonts.googleapis.com/icon?family=Material+Icons";
+	private static $mdl_icons_local = "res/css/icons.css";
+	private static $mdl_icons_cdn = "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-	private static $mdl_fonts = "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+	private static $mdl_fonts_local = "res/css/fonts.css";
+	private static $mdl_fonts_cdn = "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
 
 	// CDN settings
-	private static $use_cdn = true;
+	private static $use_cdn = false;
 
 	// File System settings.
 	private static $root_dir = "/home/javdaniel/liferay/git/tacklehu";
@@ -63,11 +65,21 @@ class Config {
 	}
 
 	static function getMaterialIcons() {
-		return self::$mdl_icons;
+		if (self::useCDN()) {
+			return self::$mdl_icons_cdn;
+		}
+		else {
+			return self::$mdl_icons_local;
+		}
 	}
 
 	static function getMaterialFonts() {
-		return self::$mdl_fonts;
+		if (self::useCDN()) {
+			return self::$mdl_fonts_cdn;
+		}
+		else {
+			return self::$mdl_fonts_local;
+		}
 	}
 
 	static function useCDN() {

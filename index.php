@@ -1,3 +1,4 @@
+<!doctype html>
 <?php
 require_once("lib/init.php");
 ?>
@@ -11,7 +12,16 @@ require_once("lib/init.php");
 	<link rel="stylesheet" type="text/css" href="<?php echo Config::getMaterialFonts() ?>">
 </head>
 <body>
-	<h1>It's alive! :-)</h1>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<?php require_once("lib/views/header.php"); ?>
+		<main class="mdl-layout__content">
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--2-col-phone">It's alive :-)</div>
+				<div class="mdl-cell mdl-cell--4-col">Content</div>
+				<div class="mdl-cell mdl-cell--4-col">goes</div>
+				<div class="mdl-cell mdl-cell--4-col">here</div>
+			</div>
+	</div>
 </body>
 </html>
 
