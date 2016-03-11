@@ -5,9 +5,10 @@ require_once("lib/init.php");
 <html>
 <head>
 	<title>tackle.hu</title>
-	<link rel="stylesheet" href="./res/material.min.css">
-	<script src="./res/material.min.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="<?php echo Config::getMaterialCSS() ?>">
+	<script src="<?php echo Config::getMaterialJS() ?>"></script>
+	<link rel="stylesheet" href="<?php echo Config::getMaterialFonts() ?>">
+	
 </head>
 <body>
 	<h1>It's alive! :-)</h1>

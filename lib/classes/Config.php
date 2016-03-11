@@ -1,6 +1,19 @@
 <?php
 
 class Config {
+
+	// Material locations
+	private static $mdl_js_local = "res/material.min.js";
+	private static $mdl_css_local = "res/material.min.css";
+
+	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
+	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-pink.min.css";
+
+	private static $mdl_fonts = "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+	// CDN settings
+	private static $use_cdn = true;
+
 	// File System settings.
 	private static $root_dir = "/home/javdaniel/liferay/git/tacklehu";
 
@@ -27,7 +40,32 @@ class Config {
 //		date_default_timezone_set($server_timezone);
 //		session_start();
 		ob_start();
+	}
 
+	static function getMaterialJS() {
+		if (self::useCDN()) {
+			return self::$mdl_js_cdn;
+		}
+		else {
+			return self::$mdl_js_local;
+		}
+	}
+
+	static function getMaterialCSS() {
+		if (self::useCDN()) {
+			return self::$mdl_css_cdn;
+		}
+		else {
+			return self::$mdl_css_local;
+		}
+	}
+
+	static function getMaterialFonts() {
+		return self::$mdl_fonts;
+	}
+
+	static function useCDN() {
+		return self::$use_cdn;
 	}
 
 	static function destroy() {
