@@ -17,6 +17,6 @@ require_once("lib/init.php");
 
 <?php
 // This is the end.
-Config::destroy();
+require_once("lib/done.php");
 
 ?>
