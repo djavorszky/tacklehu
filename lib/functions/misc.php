@@ -7,4 +7,10 @@
 	function debug_echo($message) {
 		echo "<pre>DEBUG: $message</pre>";
 	}
+
+	function die_hard($message) {
+		echo $message;
+		error_log($message);
+		die();
+	}
 ?>

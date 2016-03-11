@@ -19,7 +19,9 @@ require_once("lib/init.php");
 				<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--2-col-phone">It's alive :-)</div>
 				<div class="mdl-cell mdl-cell--4-col">Content</div>
 				<div class="mdl-cell mdl-cell--4-col">goes</div>
-				<div class="mdl-cell mdl-cell--4-col">here</div>
+				<div class="mdl-cell mdl-cell--4-col">stuff.
+
+				</div>
 			</div>
 	</div>
 </body>

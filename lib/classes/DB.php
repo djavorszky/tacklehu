@@ -1,8 +1,6 @@
 <?php
 
 class DB {
-
-
 	private static $connection;
 
 	static function init() {
@@ -20,13 +18,40 @@ class DB {
 		self::mq("SET NAMES utf8;");
 	}
 
+	static function insert($table, $array) {
+		if (!is_array($array)) {
+			die_hard("Insert called with non-array.");
+		}
+
+		$cols = "";
+		$values = "";
+		foreach ($array as $column => $value) {
+			$cols .= "$column, ";
+			if (is_numeric($value)) {
+				$values .= "$value, ";
+			}
+			else {
+				$values .= "'" . self::escapeSQL($value) . "', ";
+			}
+		}
+
+		$cols = rtrim($cols, ", ");
+		$values = rtrim($values, ", ");
+
+		$query = "INSERT INTO $table ($cols) VALUES ($values);";
+
+		self::mq($query);
+	}
+
 	static function mq($query) {
 		$q = mysqli_query(self::$connection, $query);
 		if (!$q && debug()) {
 			echo "<pre>";
-			echo "$query\n";
+			echo "$query<br>";
 			echo mysqli_error(self::$connection);
 			echo "</pre>";
+			error_log("Error with query: \"$query\" -- " . mysqli_error(self::$connection));
+
 		}
 
 		return $q;
@@ -38,6 +63,10 @@ class DB {
 
 	static function insertId() {
 		return mysqli_insert_id(self::$connection);
+	}
+
+	static function escapeSQL($string) {
+		return mysqli_real_escape_string(self::$connection, $string);
 	}
 }
 
