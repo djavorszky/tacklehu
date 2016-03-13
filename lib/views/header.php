@@ -6,7 +6,7 @@
 		<nav class="mdl-navigation mdl-layout--large-screen-only">
 			<a class="mdl-navigation__link" href="#"><?php echo R::lang("nav-link-1-key") ?></a>
 			<a class="mdl-navigation__link" href="#"><?php echo R::lang("nav-link-2-key") ?></a>
-			<a class="mdl-navigation__link" href="#"><?php echo R::lang("nav-link-3-key") ?></a>
+			<p class="mdl-navigation__link"><?php echo R::lang("welcome-with-placeholder", array($user)) ?></p>
 		</nav>
 	</div>
 </header>

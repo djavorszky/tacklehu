@@ -2,6 +2,8 @@
 <?php
 require_once("lib/init.php");
 
+$user = "tackle";
+
 $response = Handler::respond($_GET, $_POST);
 ?>
 
