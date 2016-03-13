@@ -12,6 +12,6 @@ DB::init();
 
 DBUpgrader::checkTables();
 
-R::init();
+R::init("hu");
 
 ?>
