@@ -2,22 +2,15 @@
 
 abstract class SuperPage {
 
-	protected $view = "";
+	protected $component;
+	protected $view;
 
-
-	public function loadView($viewName = "") {
-		if ($viewName == "" && $this->view == "") {
-			die_hard("No view specified, nothing to load.");
-		}
-		elseif ($viewName != "") {
-			include(Config::getRootDir() . "/lib/views/$viewName.php");	
-		}
-		else {
-			include(Config::getRootDir() . "/lib/views/$this->view.php");
-		}
+	public function loadView() {
+		include(Config::getRootDir() . "/lib/views/$this->component/$this->view.php");
 	}
 
-	public function setView($viewName) {
+	public function setView($component, $viewName) {
+		$this->component = $component;
 		$this->view = $viewName;
 	}
 

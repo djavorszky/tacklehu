@@ -4,7 +4,7 @@ class NotFound extends SuperPage {
 
 	// Constructor..
 	public function __construct() {
-		$this->setView("404");
+		$this->setView("error", "404");
 	}
 
 	// Show is the default action, always. This is meant to display the default UI.

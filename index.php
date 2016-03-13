@@ -18,7 +18,7 @@ $response = Handler::respond($_GET, $_POST);
 </head>
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-		<?php require_once("lib/views/header.php"); ?>
+		<?php require_once("lib/views/common/header.php"); ?>
 		<main class="mdl-layout__content">
 			<div class="mdl-grid">
 				<?php 

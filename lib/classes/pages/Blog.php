@@ -3,7 +3,7 @@
 class Blog extends SuperPage {
 
 	public function __construct() {
-		$this->setView("blog");
+		$this->setView("blog", "blog");
 	}
 
 	// Show is the default action, always. This is meant to display the default UI.
