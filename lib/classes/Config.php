@@ -3,16 +3,16 @@
 class Config {
 
 	// Material locations
-	private static $mdl_js_local = "res/material/material.min.js";
+	private static $mdl_js_local = "/res/material/material.min.js";
 	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
 
-	private static $mdl_css_local = "res/material/material.min.css";
+	private static $mdl_css_local = "/res/material/material.min.css";
 	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-pink.min.css";
 
-	private static $mdl_icons_local = "res/css/icons.css";
+	private static $mdl_icons_local = "/res/css/icons.css";
 	private static $mdl_icons_cdn = "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-	private static $mdl_fonts_local = "res/css/fonts.css";
+	private static $mdl_fonts_local = "/res/css/fonts.css";
 	private static $mdl_fonts_cdn = "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
 
 	// CDN settings
@@ -51,6 +51,9 @@ class Config {
 			return self::$mdl_js_cdn;
 		}
 		else {
+			if (self::$context) {
+				return "/" . self::$context . self::$mdl_js_local;
+			}
 			return self::$mdl_js_local;
 		}
 	}
@@ -60,6 +63,9 @@ class Config {
 			return self::$mdl_css_cdn;
 		}
 		else {
+			if (self::$context) {
+				return "/" . self::$context . self::$mdl_css_local;
+			}
 			return self::$mdl_css_local;
 		}
 	}
@@ -69,6 +75,9 @@ class Config {
 			return self::$mdl_icons_cdn;
 		}
 		else {
+			if (self::$context) {
+				return "/" . self::$context . self::$mdl_icons_local;
+			}
 			return self::$mdl_icons_local;
 		}
 	}
@@ -78,6 +87,9 @@ class Config {
 			return self::$mdl_fonts_cdn;
 		}
 		else {
+			if (self::$context) {
+				return "/" . self::$context . self::$mdl_fonts_local;
+			}
 			return self::$mdl_fonts_local;
 		}
 	}
