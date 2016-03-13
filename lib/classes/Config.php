@@ -46,6 +46,13 @@ class Config {
 		ob_start();
 	}
 
+	static function getCustomCSS($name) {
+		if (self::$context) {
+			return "/" . self::$context . "/res/css/$name.css";
+		}
+		return "/res/css/$name.css";
+	}
+
 	static function getMaterialJS() {
 		if (self::useCDN()) {
 			return self::$mdl_js_cdn;

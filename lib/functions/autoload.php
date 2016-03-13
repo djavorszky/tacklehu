@@ -1,7 +1,13 @@
 <?php
 
 spl_autoload_register(function ($name) {
-    require_once("lib/classes/$name.php");
+	if (file_exists("lib/classes/$name.php")) {
+		require_once("lib/classes/$name.php");	
+	}
+	elseif (file_exists("lib/classes/pages/$name.php")) {
+		require_once("lib/classes/pages/$name.php");
+	}
+    
 });
 
 ?>

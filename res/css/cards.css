@@ -1,0 +1,7 @@
+<style>
+	.card-wide > .mdl-card {
+		width:720px !important;
+		background-color:black !important;
+		margin: 0 auto !important;
+	}
+</style>

@@ -1,12 +1,15 @@
 <!doctype html>
 <?php
 require_once("lib/init.php");
+
+$response = Handler::respond($_GET, $_POST);
 ?>
 
 <html>
 <head>
 	<title><?php echo R::lang("site-title-key") ?></title>
 	<script src="<?php echo Config::getMaterialJS() ?>"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo Config::getCustomCSS('cards') ?>">
 	<link rel="stylesheet" href="<?php echo Config::getMaterialCSS() ?>">
 	<link rel="stylesheet" href="<?php echo Config::getMaterialIcons() ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo Config::getMaterialFonts() ?>">
@@ -16,24 +19,12 @@ require_once("lib/init.php");
 		<?php require_once("lib/views/header.php"); ?>
 		<main class="mdl-layout__content">
 			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--2-col-phone">It's alive :-)</div>
-				<div class="mdl-cell mdl-cell--4-col">Content</div>
-				<div class="mdl-cell mdl-cell--4-col">goes</div>
-				<div class="mdl-cell mdl-cell--4-col">
-					<?php
-						if (sizeof($_GET) != 0) {
-							print_array($_GET);
-						}
-						else {
-							echo '$_GET is empty<br>';
-						}
-
-					?>
-				</div>
+				<?php 
+					$response->loadView();
+				?>
 			</div>
-		</main
-
->	</div>
+		</main>
+	</div>
 </body>
 </html>
 
