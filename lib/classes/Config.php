@@ -25,7 +25,6 @@ class Config {
 	private static $protocol = "http";
 	private static $host = "localhost";
 	private static $context = "tacklehu";
-	private static $page = "index.php";
 	private static $hasContext = true;
 	private static $url;
 
@@ -40,17 +39,15 @@ class Config {
 		mb_http_output('UTF-8');
 		mb_http_input('UTF-8');
 
-// 		TODO comment it back once this is on a server.
-//		date_default_timezone_set($server_timezone);
-//		session_start();
+		session_start();
 		ob_start();
 	}
 
-	static function getCustomCSS($name) {
+	static function getCustomCSS() {
 		if (self::$context) {
-			return "/" . self::$context . "/res/css/$name.css";
+			return "/" . self::$context . "/res/css/custom.css";
 		}
-		return "/res/css/$name.css";
+		return "/res/css/custom.css";
 	}
 
 	static function getMaterialJS() {
@@ -128,10 +125,10 @@ class Config {
 
 	private function constructUrl() {
 		if (self::$hasContext) {
-			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context . "/" . self::$page;
+			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context;
 		}
 		else {
-			self::$url = self::$protocol . "://" . self::$host . "/" . self::$page;
+			self::$url = self::$protocol . "://" . self::$host;
 		}
 	}
 

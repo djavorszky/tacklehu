@@ -2,13 +2,10 @@
 
 class Blog extends SuperPage {
 
-	public function __construct() {
-		$this->setView("blog", "blog");
-	}
+	public function __construct($requestUri) {
+		$this->requestUri = $requestUri;
 
-	// Show is the default action, always. This is meant to display the default UI.
-	public function show() {
-		//TODO implement.
+		$this->setView("blog", "blog");
 	}
 
 	// View is for viewing individual entries.

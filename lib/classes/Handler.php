@@ -5,22 +5,22 @@ class Handler {
 	private static $defaultAction = "blog";
 
 	public static function respond($getArray, $postArray) {
-		if ($getArray['requestUri'] == "" || $getArray['requestUri'] == "index.php") {
-			$obj = new Blog();
+		$requestUri = $getArray['requestUri'];
+
+		if ($requestUri == "" || $requestUri == "index.php") {
+			$obj = new Blog($requestUri);
 		}
 		else {
-			$explodedUri = explode("/", $getArray['requestUri']);
+			$explodedUri = explode("/", $requestUri);
 
-			foreach ($explodedUri as $stuff) {
-				$clazz = ucFirst($stuff);
+			$clazz = ucFirst($explodedUri[0]);
 
-				if (class_exists($clazz)) {
-					$obj = new $clazz();
-				}
-				else {
-					// TODO: Implement...
-					$obj = new NotFound();
-				}
+			if (class_exists($clazz)) {
+				$obj = new $clazz($requestUri);
+				$obj->action($postArray);
+			}
+			else {
+				$obj = new NotFound($requestUri);
 			}
 		}
 

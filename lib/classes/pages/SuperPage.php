@@ -4,6 +4,7 @@ abstract class SuperPage {
 
 	protected $component;
 	protected $view;
+	protected $requestUri;
 
 	public function loadView() {
 		include(Config::getRootDir() . "/lib/views/$this->component/$this->view.php");
@@ -14,11 +15,13 @@ abstract class SuperPage {
 		$this->view = $viewName;
 	}
 
-	// Constructor..
-	abstract public function __construct();
-
 	// Show is the default action, always. This is meant to display the default UI.
-	abstract public function show();
+	public function show() {
+		$this->loadView();
+	}
+
+	// Constructor..
+	abstract public function __construct($uriString);
 
 	// View is for viewing individual entries.
 	abstract public function view($uriString);
@@ -28,7 +31,7 @@ abstract class SuperPage {
 
 	// Action is to handle POST actions.
 	abstract public function action($postArray);
-
+/*
 	// Link that will inevitably call the "show()" method.
 	abstract public function getDefaultPageLink();
 
@@ -37,6 +40,7 @@ abstract class SuperPage {
 
 	// Link that will inevitably call the "edit()" method.
 	abstract public function getEditPageLink($uriString);
+*/
 }
 
 

@@ -30,8 +30,11 @@ class DB {
 			if (is_numeric($value)) {
 				$values .= "$value, ";
 			}
-			else {
+			elseif ($value != "NOW()") {
 				$values .= "'" . self::escapeSQL($value) . "', ";
+			}
+			else {
+				$values .= "NOW(), ";
 			}
 		}
 
@@ -58,7 +61,7 @@ class DB {
 	}
 
 	static function mqval($query) {
-		return self::mq($query)[0];
+		return mysqli_fetch_array(self::mq($query))[0];
 	}
 
 	static function insertId() {

@@ -11,7 +11,7 @@ $response = Handler::respond($_GET, $_POST);
 <head>
 	<title><?php echo R::lang("site-title-key") ?></title>
 	<script src="<?php echo Config::getMaterialJS() ?>"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo Config::getCustomCSS('cards') ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo Config::getCustomCSS() ?>">
 	<link rel="stylesheet" href="<?php echo Config::getMaterialCSS() ?>">
 	<link rel="stylesheet" href="<?php echo Config::getMaterialIcons() ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo Config::getMaterialFonts() ?>">
@@ -22,7 +22,7 @@ $response = Handler::respond($_GET, $_POST);
 		<main class="mdl-layout__content">
 			<div class="mdl-grid">
 				<?php 
-					$response->loadView();
+					$response->show();
 				?>
 			</div>
 		</main>
