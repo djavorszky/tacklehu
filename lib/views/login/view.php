@@ -1,3 +1,10 @@
+<?php 
+global $_signedInUser;
+
+if (! $_signedInUser) { 
+
+?>
+
 <div class="row">
 	<div class="page-header col-sm-5 col-sm-offset-3">
 		<h1><?php echo R::lang("login-page-header")?></h1>
@@ -28,3 +35,10 @@
 		</div>
 	</div>
 </form>
+<?php } else { ?>
+<div class="row">
+	<div class="page-header col-sm-12">
+		<h1><?php echo R::lang("logged-in-as-user", array($_signedInUser->userName))?></h1>
+	</div>
+</div>
+<?php } ?>
