@@ -9,7 +9,7 @@ $response = Handler::respond($_GET, $_POST);
 
 <html>
 <head>
-	<title><?php echo R::lang("site-title-key") ?></title>
+	<title><?php R::lang("site-title-key") ?></title>
 	<?php Config::printBootstrapAndJQueryResources() ?>
 </head>
 <body>
