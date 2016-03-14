@@ -1,20 +1,24 @@
-<header class="mdl-layout__header">
-	<div class="mdl-layout-icon"></div>
-	<div class="mdl-layout__header-row">
-		<span class="mdl-layout__title"><?php echo R::lang("header-title-key") ?></span>
-		<div class="mdl-layout-spacer"></div>
-		<nav class="mdl-navigation mdl-layout--large-screen-only">
-			<a class="mdl-navigation__link" href="<?php echo Config::getURL()?>/login"><?php echo R::lang("nav-link-login") ?></a>
-			<a class="mdl-navigation__link" href="#"><?php echo R::lang("nav-link-2-key") ?></a>
-			<p class="mdl-navigation__link"><?php echo R::lang("welcome-with-placeholder", array($user)) ?></p>
-		</nav>
-	</div>
-</header>
-<div class="mdl-layout__drawer mdl-layout-no-desktop-drawer-button">
-	<span class="mdl-layout__title"><?php echo R::lang("header-title-key") ?></span>
-    <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="<?php echo Config::getURL()?>/login"><?php echo R::lang("nav-link-login") ?></a>
-        <a class="mdl-navigation__link" href="#"><?php echo R::lang("nav-link-2-key") ?></a>
-        <a class="mdl-navigation__link" href="#"><?php echo R::lang("nav-link-3-key") ?></a>
-    </nav>
-</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible-navigation" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<?php echo Config::getURL()?>"><?php echo R::lang("site-title-key") ?></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="collapsible-navigation">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<?php echo Config::getURL()?>/blog"><?php echo R::lang("nav-link-blog") ?> <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="<?php echo Config::getURL()?>/login"><?php echo R::lang("nav-link-login") ?></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

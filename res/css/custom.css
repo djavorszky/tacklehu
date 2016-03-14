@@ -1,5 +1,5 @@
 <style>
-	.gray {
-		background-color:gray;
-	}
+	/* adding padding because of fixed navbar */
+	body { padding-bottom: 70px; }
+
 </style>
