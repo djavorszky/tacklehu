@@ -30,7 +30,7 @@ class Login extends SuperPage {
 
 					Session::logUserIn(User::getUserById($user->userId));
 					DB::mq("UPDATE User SET lastLogin = NOW() WHERE userId = $user->userId");
-					Session::addMessage(R::lang("login-success", array($user->userName)), "success");
+					Session::addMessage(R::lang("login-success", array(Security::escapeHTML($user->userName))), "success");
 					Security::redirect(Config::getURL());
 				}
 				else {

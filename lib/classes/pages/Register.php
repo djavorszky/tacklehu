@@ -40,7 +40,7 @@ class Register extends SuperPage {
 
 					$user = User::getUserById($userId);
 
-					Session::addMessage(R::lang("register-success", array($user->userName)), "success");
+					Session::addMessage(R::lang("register-success", array(Security::escapeHTML($user->userName))), "success");
 					Session::logUserIn($user);
 					Security::redirect(Config::getURL());
 				}

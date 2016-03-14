@@ -24,6 +24,10 @@ class Security {
 		header("Location: $location");
 		die();
 	}
+
+	static function escapeHTML($text) {
+		return htmlspecialchars($text);
+	}
 }
 
 
