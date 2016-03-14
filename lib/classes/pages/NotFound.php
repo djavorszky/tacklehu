@@ -21,23 +21,5 @@ class NotFound extends SuperPage {
 	public function action($postArray) {
 
 	}
-
-	// Link that will inevitably call the "show()" method.
-	public function getDefaultPageLink() {
-
-	}
-
-	// Link that will inevitably call the "view()" method.
-	public function getViewPageLink($uriString) {
-
-	}
-
-	// Link that will inevitably call the "edit()" method.
-	public function getEditPageLink($uriString) {
-
-	}
 }
-
-
-
 ?>

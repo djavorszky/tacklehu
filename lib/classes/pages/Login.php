@@ -46,22 +46,6 @@ class Login extends SuperPage {
 		// new table: FailedLogins or something and save $_SERVER['REMOTE_ADDR'] 
 		// on failed logins. After 3 attempts, display captcha.
 	}
-
-	// Link that will inevitably call the "show()" method.
-	public function getDefaultPageLink() {
-
-	}
-
-	// Link that will inevitably call the "view()" method.
-	public function getViewPageLink($uriString) {
-
-	}
-
-	// Link that will inevitably call the "edit()" method.
-	public function getEditPageLink($uriString) {
-
-	}
-
 }
 
 

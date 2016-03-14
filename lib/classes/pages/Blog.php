@@ -22,23 +22,6 @@ class Blog extends SuperPage {
 	public function action($postArray) {
 		//TODO implement.
 	}
-
-	// Link that will inevitably call the "show()" method.
-	public function getDefaultPageLink() {
-		//TODO implement.
-	}
-
-	// Link that will inevitably call the "view()" method.
-	public function getViewPageLink($uriString) {
-		//TODO implement.
-	}
-
-	// Link that will inevitably call the "edit()" method.
-	public function getEditPageLink($uriString) {
-		//TODO implement.
-	}
-
-
 }
 
 ?>

@@ -31,18 +31,6 @@ abstract class SuperPage {
 
 	// Action is to handle POST actions.
 	abstract public function action($postArray);
-/*
-	// Link that will inevitably call the "show()" method.
-	abstract public function getDefaultPageLink();
-
-	// Link that will inevitably call the "view()" method.
-	abstract public function getViewPageLink($uriString);
-
-	// Link that will inevitably call the "edit()" method.
-	abstract public function getEditPageLink($uriString);
-*/
 }
-
-
 
 ?>
