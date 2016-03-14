@@ -23,12 +23,13 @@ class Register extends SuperPage {
 				if (! User::isNameOrEmailTaken($postArray['user'], $postArray['email'])) {
 					$code = Security::generateCode(20);
 
-					// TODO: encrypt password.
+					$encryptedPassword = Security::encryptPassword($postArray['password'], $code);
+
 					// TODO: Implement captcha.
 
 					$columns = array(
 						"userName" => $postArray['user'],
-						"password" => $postArray['password'],
+						"password" => $encryptedPassword,
 						"emailAddress" => $postArray['email'],
 						"lastLogin" => "NOW()",
 						"registerDate" => "NOW()",

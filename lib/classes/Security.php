@@ -15,6 +15,10 @@ class Security {
 
 		return $code;
 	}
+
+	static function encryptPassword($password, $hash) {
+		return crypt($password, "$6$" . md5($hash));
+	}
 }
 
 

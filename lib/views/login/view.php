@@ -6,8 +6,8 @@
 		<form action="<?php echo Config::getURL()?>/login" method="POST">
 			<input type="hidden" name="action" value="doLogin">
 			<div class="mdl-cell mdl-cell--5-col mdl-cell--10-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				<input class="mdl-textfield__input" type="text" name="user" id="username" pattern="^[a-zA-Z]{1}[a-zA-Z0-9_.-]*$" title="Only letters, numbers, underscore, hyphen and period are allowed and must start with a letter.">
-				<label class="mdl-textfield__label" for="username">Username</label>
+				<input class="mdl-textfield__input" type="email" name="email" id="email">
+				<label class="mdl-textfield__label" for="email">Email</label>
 				<span class="mdl-textfield__error">Something's wrong</span>
 			</div>
 			<div class="mdl-cell mdl-cell--5-col mdl-cell--10-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

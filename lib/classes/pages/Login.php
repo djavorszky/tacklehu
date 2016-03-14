@@ -20,7 +20,27 @@ class Login extends SuperPage {
 	// Action is to handle POST actions.
 	public function action($postArray) {
 		if (sizeof($postArray) != 0 && array_key_exists("action", $postArray) && $postArray["action"] == "doLogin") {
-			print_array($postArray);
+			$escapedEmailAddress = DB::escapeSQL($postArray['email']);
+
+			$user = mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE emailAddress = '$escapedEmailAddress'"));
+
+			if ($user) {
+				$encryptedPassword = Security::encryptPassword($postArray['password'], $user->code_);
+				if ($encryptedPassword == $user->password) {
+					echo "Password is correct.";
+					// TODO implement
+				}
+				else {
+					// TODO implement
+					echo "User doesn't exist or wrong password.";
+				}
+			}
+			else {
+				// TODO implement
+				echo "User doesn't exist or wrong password.";
+			}
+
+
 		}
 
 		// TODO implement captcha after 3 attempts.

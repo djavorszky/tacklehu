@@ -7,7 +7,7 @@ class Config {
 	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
 
 	private static $mdl_css_local = "/res/material/material.min.css";
-	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-pink.min.css";
+	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-red.min.css";
 
 	private static $mdl_icons_local = "/res/css/icons.css";
 	private static $mdl_icons_cdn = "https://fonts.googleapis.com/icon?family=Material+Icons";
