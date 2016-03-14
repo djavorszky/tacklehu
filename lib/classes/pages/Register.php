@@ -40,17 +40,18 @@ class Register extends SuperPage {
 
 					$user = User::getUserById($userId);
 
-					Session::addMessage("Welcome to tackle.hu!", "success");
+					Session::addMessage(R::lang("register-success", array($user->userName)), "success");
 					Session::logUserIn($user);
+					Security::redirect(Config::getURL());
 				}
 				else {
-					//TODO implement
-					echo "Username or email address already taken.";
+					Session::addMessage(R::lang("user-exists"), "warning");
+					Security::redirect(Config::getURL() . "/register");
 				}
 			}
 			else {
-				// TODO implement
-				echo "Password mismatch.";
+				Session::addMessage(R::lang("password-mismatch"), "warning");
+				Security::redirect(Config::getURL() . "/register");
 			}
 		}
 	}

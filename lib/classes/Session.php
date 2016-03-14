@@ -13,7 +13,8 @@ class Session {
 
 	static function showMessage() {
 		if (isset($_SESSION['messageText'])) {
-			echo '<div class="alert alert-' . $_SESSION['messageType'] . '">';
+			echo '<div class="alert alert-' . $_SESSION['messageType'] . ' alert-dismissible" role="alert">';
+			echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 			echo $_SESSION['messageText'];
 			echo '</div>';
 

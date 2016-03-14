@@ -2,11 +2,10 @@
 
 abstract class GetResponseAction {
 
-	// The GetResponseAction is only dealing with responses to GET requests. 
+	// The GetResponseAction is only dealing with responses to GET requests.
+	// Always, ALWAYS redirect at the end of actions.
 	abstract public function action($requestUri);
 
-	// This is just here because reasons. Otherwise errors.
-	abstract public function show();
 }
 
 

@@ -30,15 +30,15 @@ class Login extends SuperPage {
 
 					Session::logUserIn(User::getUserById($user->userId));
 					DB::mq("UPDATE User SET lastLogin = NOW() WHERE userId = $user->userId");
-					Session::addMessage("Some success here.", "success");
+					Session::addMessage(R::lang("login-success", array($user->userName)), "success");
 					Security::redirect(Config::getURL());
 				}
 				else {
-					Session::addMessage("User doesn't exist or wrong password", "warning");
+					Session::addMessage(R::lang("login-failed"), "warning");
 				}
 			}
 			else {
-				Session::addMessage("User doesn't exist or wrong password", "warning");
+				Session::addMessage(R::lang("login-failed"), "warning");
 			}
 		}
 

@@ -13,6 +13,10 @@ class Handler {
 		else {
 			$explodedUri = explode("/", $requestUri);
 
+			if (strcasecmp($explodedUri[0], "superpage") || strcasecmp($explodedUri[0], "getresponseaction")) {
+				return new NotFound($requestUri);
+			}
+
 			$clazz = ucFirst($explodedUri[0]);
 
 			if (class_exists($clazz)) {

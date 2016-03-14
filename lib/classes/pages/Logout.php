@@ -3,13 +3,9 @@
 class Logout extends GetResponseAction {
 
 	public function action($requestUri) {
-		Session::addMessage("Logged out successfully, bye!", "success");
+		Session::addMessage(R::lang("logout-successful"), "success");
 		Session::logUserOut();
 		Security::redirect(Config::getURL());
-	}
-
-	public function show() {
-		// ignore.
 	}
 
 }

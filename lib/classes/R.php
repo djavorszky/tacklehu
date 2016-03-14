@@ -34,7 +34,7 @@ class R {
 			return self::$langValues[$key];
 		}
 		
-		echo vsprintf(self::$langValues[$key], $array);
+		return vsprintf(self::$langValues[$key], $array);
 	}
 
 }
