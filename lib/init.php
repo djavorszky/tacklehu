@@ -14,7 +14,9 @@ DB::init();
 
 DBUpgrader::checkTables();
 
-if ($lang = Cookie::getCookieValue("lang")) {
+$lang = Cookie::getCookieValue("lang");
+
+if ($lang && in_array($lang, Config::getLanguages())) {
 	R::init($lang);
 }
 else {
