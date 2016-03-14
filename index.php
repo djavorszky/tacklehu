@@ -10,11 +10,7 @@ $response = Handler::respond($_GET, $_POST);
 <html>
 <head>
 	<title><?php echo R::lang("site-title-key") ?></title>
-	<script src="<?php echo Config::getMaterialJS() ?>"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo Config::getCustomCSS() ?>">
-	<link rel="stylesheet" href="<?php echo Config::getMaterialCSS() ?>">
-	<link rel="stylesheet" href="<?php echo Config::getMaterialIcons() ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo Config::getMaterialFonts() ?>">
+	<?php Config::printBootstrapAndJQueryResources() ?>
 </head>
 <body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

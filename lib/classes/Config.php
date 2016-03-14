@@ -3,17 +3,15 @@
 class Config {
 
 	// Material locations
-	private static $mdl_js_local = "/res/material/material.min.js";
-	private static $mdl_js_cdn = "https://code.getmdl.io/1.1.2/material.min.js";
+	private static $bootstrap_js_local = "/res/bootstrap/js/bootstrap.min.js";
 
-	private static $mdl_css_local = "/res/material/material.min.css";
-	private static $mdl_css_cdn = "https://code.getmdl.io/1.1.2/material.indigo-red.min.css";
+	private static $bootstrap_css_local = "/res/bootstrap/css/bootstrap.min.css";
 
-	private static $mdl_icons_local = "/res/css/icons.css";
-	private static $mdl_icons_cdn = "https://fonts.googleapis.com/icon?family=Material+Icons";
+	private static $bootstrap_theme_css = "/res/bootstrap/css/bootstrap-theme.min.css";
 
-	private static $mdl_fonts_local = "/res/css/fonts.css";
-	private static $mdl_fonts_cdn = "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+	private static $bootstrap_fonts_local = "/res/css/fonts.css";
+
+	private static $jquery_local = "/res/jquery/jquery-2.2.1.min.js";
 
 	// CDN settings
 	private static $use_cdn = false;
@@ -43,6 +41,30 @@ class Config {
 		ob_start();
 	}
 
+	static function printBootstrapAndJQueryResources() {
+		if (self::$use_cdn) {
+			echo '<script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>';
+			echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">';
+			echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">';
+			echo '<link rel="stylesheet" href="' . self::getCustomCSS() . '">';
+			echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
+		}
+		else {
+			echo '<script src="' . self::getJQuery() . '"></script>';
+			echo '<link rel="stylesheet" href="' . self::getBootstrapCSS() . '">';
+			echo '<link rel="stylesheet" href="' . self::getBootstrapThemeCSS() . '">';
+			echo '<link rel="stylesheet" href="' . self::getCustomCSS() . '">';
+			echo '<script src="' . self::getBootstrapJS() . '"></script>';
+		}
+	}
+
+	static function getJQuery() {
+		if (self::$context) {
+			return "/" . self::$context . self::$jquery_local;
+		}
+		return self::$jquery_local;
+	}
+
 	static function getCustomCSS() {
 		if (self::$context) {
 			return "/" . self::$context . "/res/css/custom.css";
@@ -50,52 +72,32 @@ class Config {
 		return "/res/css/custom.css";
 	}
 
-	static function getMaterialJS() {
-		if (self::useCDN()) {
-			return self::$mdl_js_cdn;
+	static function getBootstrapJS() {
+		if (self::$context) {
+			return "/" . self::$context . self::$bootstrap_js_local;
 		}
-		else {
-			if (self::$context) {
-				return "/" . self::$context . self::$mdl_js_local;
-			}
-			return self::$mdl_js_local;
-		}
+		return self::$bootstrap_js_local;
 	}
 
-	static function getMaterialCSS() {
-		if (self::useCDN()) {
-			return self::$mdl_css_cdn;
+	static function getBootstrapCSS() {
+		if (self::$context) {
+			return "/" . self::$context . self::$bootstrap_css_local;
 		}
-		else {
-			if (self::$context) {
-				return "/" . self::$context . self::$mdl_css_local;
-			}
-			return self::$mdl_css_local;
-		}
+		return self::$bootstrap_css_local;
 	}
 
-	static function getMaterialIcons() {
-		if (self::useCDN()) {
-			return self::$mdl_icons_cdn;
+	static function getBootstrapThemeCSS() {
+		if (self::$context) {
+			return "/" . self::$context . self::$bootstrap_theme_css;
 		}
-		else {
-			if (self::$context) {
-				return "/" . self::$context . self::$mdl_icons_local;
-			}
-			return self::$mdl_icons_local;
-		}
+		return self::$bootstrap_theme_css;
 	}
 
-	static function getMaterialFonts() {
-		if (self::useCDN()) {
-			return self::$mdl_fonts_cdn;
+	static function getBootstrapFonts() {
+		if (self::$context) {
+			return "/" . self::$context . self::$bootstrap_fonts_local;
 		}
-		else {
-			if (self::$context) {
-				return "/" . self::$context . self::$mdl_fonts_local;
-			}
-			return self::$mdl_fonts_local;
-		}
+		return self::$bootstrap_fonts_local;
 	}
 
 	static function useCDN() {
