@@ -9,6 +9,7 @@ $response = Handler::respond($_GET, $_POST);
 <head>
 	<title><?php echo R::lang("site-title-key") ?></title>
 	<?php Config::printBootstrapAndJQueryResources() ?>
+	<link rel="shortcut icon" href="<?php echo Config::getURL()?>/res/black-letter-t.ico">
 </head>
 <body>
 	<?php require_once("lib/views/common/header.php"); ?>
