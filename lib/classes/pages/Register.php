@@ -20,7 +20,7 @@ class Register extends SuperPage {
 	public function action($postArray) {
 		if (sizeof($postArray) != 0 && array_key_exists("action", $postArray) && $postArray["action"] == "doRegister") {
 			if ($postArray['password'] == $postArray['password2']) {
-				if (! User::isNameOrEmailTaken($postArray['user'], $postArray['email'])) {
+				if (! User::isNameOrEmailTaken($postArray['username'], $postArray['email'])) {
 					$code = Security::generateCode(20);
 
 					$encryptedPassword = Security::encryptPassword($postArray['password'], $code);
@@ -28,7 +28,7 @@ class Register extends SuperPage {
 					// TODO: Implement captcha.
 
 					$columns = array(
-						"userName" => $postArray['user'],
+						"userName" => $postArray['username'],
 						"password" => $encryptedPassword,
 						"emailAddress" => $postArray['email'],
 						"lastLogin" => "NOW()",
