@@ -17,9 +17,9 @@
 		</div>
 		<div>
 			<div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				<input class="mdl-textfield__input" type="text" name="user" id="user">
+				<input class="mdl-textfield__input" type="text" name="user" id="user" pattern="^[a-zA-Z]{1}[a-zA-Z0-9_.-]*$" title="Only letters, numbers, underscore, hyphen and period are allowed and must start with a letter.">
 				<label class="mdl-textfield__label" for="user">Username</label>
-				<span class="mdl-textfield__error">Username is required.</span>
+				<span class="mdl-textfield__error">Must start with a letter. Can contain letters, numbers, period, hyphen and underscore.</span>
 			</div>
 		</div>
 		<div>
