@@ -10,8 +10,6 @@
       </button>
       <a class="navbar-brand" href="<?php echo Config::getURL()?>"><?php echo R::lang("site-title-key") ?></a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="collapsible-navigation">
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo Config::getURL()?>/blog"><?php echo R::lang("nav-link-blog") ?> <span class="sr-only">(current)</span></a></li>

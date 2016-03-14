@@ -18,7 +18,7 @@ class R {
 		while (($line = fgets($file)) != false) {
 			if ($line != "\n") {
 				$keyValue = explode("=", $line);
-				self::$langValues[$keyValue[0]] = $keyValue[1];
+				self::$langValues[$keyValue[0]] = rtrim($keyValue[1], "\n");
 			}
 		}
 
