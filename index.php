@@ -2,8 +2,6 @@
 <?php
 require_once("lib/init.php");
 
-$user = "tackle";
-
 $response = Handler::respond($_GET, $_POST);
 ?>
 
@@ -16,6 +14,12 @@ $response = Handler::respond($_GET, $_POST);
 	<?php require_once("lib/views/common/header.php"); ?>
 	<div class="container">
 		<?php 
+			Session::showMessage();
+
+			if ($_user) {
+				echo "User '$_user->userName' is logged in.";
+			}
+
 			$response->show();
 		?>
 	</div>

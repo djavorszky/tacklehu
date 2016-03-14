@@ -31,11 +31,10 @@ class R {
 		}
 
 		if (sizeof($array) == 0) {
-			echo self::$langValues[$key];
+			return self::$langValues[$key];
 		}
-		else {
-			echo vsprintf(self::$langValues[$key], $array);
-		}
+		
+		echo vsprintf(self::$langValues[$key], $array);
 	}
 
 }

@@ -14,7 +14,7 @@ class Config {
 	private static $jquery_local = "/res/jquery/jquery-2.2.1.min.js";
 
 	// CDN settings
-	private static $use_cdn = false;
+	private static $use_cdn = true;
 
 	// File System settings.
 	private static $root_dir = "/home/javdaniel/liferay/git/tacklehu";
@@ -37,7 +37,6 @@ class Config {
 		mb_http_output('UTF-8');
 		mb_http_input('UTF-8');
 
-		session_start();
 		ob_start();
 	}
 
@@ -104,7 +103,7 @@ class Config {
 		return self::$use_cdn;
 	}
 
-	static function destroy() {
+	static function end() {
 		ob_end_flush();
 	}
 

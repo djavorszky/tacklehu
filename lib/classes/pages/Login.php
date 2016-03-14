@@ -22,22 +22,22 @@ class Login extends SuperPage {
 		if (sizeof($postArray) != 0 && array_key_exists("action", $postArray) && $postArray["action"] == "doLogin") {
 			$escapedEmailAddress = DB::escapeSQL($postArray['email']);
 
-			$user = mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE emailAddress = '$escapedEmailAddress'"));
+			$user = User::getUserByEmail($escapedEmailAddress, true);
 
 			if ($user) {
 				$encryptedPassword = Security::encryptPassword($postArray['password'], $user->code_);
 				if ($encryptedPassword == $user->password) {
-					echo "Password is correct.";
-					// TODO implement
+
+					Session::logUserIn(User::getUserById($user->userId));
+					DB::mq("UPDATE User SET lastLogin = NOW() WHERE userId = $user->userId");
+					Session::addMessage("Some success here.", "success");
 				}
 				else {
-					// TODO implement
-					echo "User doesn't exist or wrong password.";
+					Session::addMessage("User doesn't exist or wrong password", "warning");
 				}
 			}
 			else {
-				// TODO implement
-				echo "User doesn't exist or wrong password.";
+				Session::addMessage("User doesn't exist or wrong password", "warning");
 			}
 
 

@@ -1,5 +1,5 @@
 <?php
 
-Config::destroy();
+Config::end();
 
 ?>

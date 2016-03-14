@@ -14,6 +14,33 @@ class User {
 
 		return false;
 	}
+
+	static function getUserById($userId, $withPassword = false) {
+		if ($withPassword) {
+			return mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE userId = $userId"));
+		}
+		else {
+			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName FROM User WHERE userId = $userId"));
+		}
+	}
+
+	static function getUserByUserName($userName, $withPassword = false) {
+		if ($withPassword) {
+			return mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE userName = '$userName'"));
+		}
+		else {
+			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName FROM User WHERE userName = '$userName'"));
+		}
+	}
+
+	static function getUserByEmail($emailAddress, $withPassword = false) {
+		if ($withPassword) {
+			return mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE emailAddress = '$emailAddress'"));
+		}
+		else {
+			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName FROM User WHERE emailAddress = '$emailAddress'"));
+		}
+	}
 }
 
 

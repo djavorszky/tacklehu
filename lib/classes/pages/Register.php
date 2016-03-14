@@ -36,7 +36,12 @@ class Register extends SuperPage {
 						"code_" => $code
 					);
 
-					DB::insert("User", $columns);
+					$userId = DB::insert("User", $columns);
+
+					$user = User::getUserById($userId);
+
+					Session::addMessage("Welcome to tackle.hu!", "success");
+					Session::logUserIn($user);
 				}
 				else {
 					//TODO implement

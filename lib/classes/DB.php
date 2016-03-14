@@ -44,6 +44,8 @@ class DB {
 		$query = "INSERT INTO $table ($cols) VALUES ($values);";
 
 		self::mq($query);
+
+		return self::insertId();
 	}
 
 	static function mq($query) {
