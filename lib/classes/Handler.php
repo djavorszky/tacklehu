@@ -21,7 +21,13 @@ class Handler {
 
 			if (class_exists($clazz)) {
 				$obj = new $clazz($requestUri);
-				$obj->action($postArray);
+
+				if ($obj INSTANCEOF GetResponseAction) {
+					$obj->action($requestUri);
+				}
+				else {
+					$obj->action($postArray);
+				}
 			}
 			else {
 				$obj = new NotFound($requestUri);

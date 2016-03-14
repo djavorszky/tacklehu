@@ -1,8 +1,10 @@
 <?php
 
 class Config {
+	// Available languages
+	private static $languages = array("hungarian" => "hu", "english" => "en");
 
-	// Material locations
+	// Bootstrap locations
 	private static $bootstrap_js_local = "/res/bootstrap/js/bootstrap.min.js";
 
 	private static $bootstrap_css_local = "/res/bootstrap/css/bootstrap.min.css";
@@ -14,7 +16,7 @@ class Config {
 	private static $jquery_local = "/res/jquery/jquery-2.2.1.min.js";
 
 	// CDN settings
-	private static $use_cdn = true;
+	private static $use_cdn = false;
 
 	// File System settings.
 	private static $root_dir = "/home/javdaniel/liferay/git/tacklehu";
@@ -55,6 +57,13 @@ class Config {
 			echo '<link rel="stylesheet" href="' . self::getCustomCSS() . '">';
 			echo '<script src="' . self::getBootstrapJS() . '"></script>';
 		}
+	}
+	static function getLanguages() {
+		return self::$languages;
+	}
+
+	static function getLanguageKey($longKey) {
+		return self::$languages[$longKey];
 	}
 
 	static function getJQuery() {

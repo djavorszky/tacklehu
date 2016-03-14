@@ -17,6 +17,15 @@
         <li class="active"><a href="<?php echo Config::getURL()?>/blog"><?php echo R::lang("nav-link-blog") ?> <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+               <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo R::lang("language")?> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <?php 
+            foreach (Config::getLanguages() as $longKey => $shortKey) {
+              echo "<li><a href=\"" . Config::getURL() . "/language/$longKey\">" . R::lang($longKey) . "</a></li>";
+            }
+            ?>
+          </ul>
         <?php if ($_signedInUser) { ?>
         <li><a href="<?php echo Config::getURL()?>/logout"><?php echo R::lang("nav-link-logout") ?></a></li>
         <?php } else { ?>

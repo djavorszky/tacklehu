@@ -14,7 +14,12 @@ DB::init();
 
 DBUpgrader::checkTables();
 
-R::init("hu");
+if ($lang = Cookie::getCookieValue("lang")) {
+	R::init($lang);
+}
+else {
+	R::init();
+}
 
 $_signedInUser = Session::getSignedInUser();
 
