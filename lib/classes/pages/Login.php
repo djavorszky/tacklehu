@@ -31,6 +31,7 @@ class Login extends SuperPage {
 					Session::logUserIn(User::getUserById($user->userId));
 					DB::mq("UPDATE User SET lastLogin = NOW() WHERE userId = $user->userId");
 					Session::addMessage("Some success here.", "success");
+					Security::redirect(Config::getURL());
 				}
 				else {
 					Session::addMessage("User doesn't exist or wrong password", "warning");
@@ -39,8 +40,6 @@ class Login extends SuperPage {
 			else {
 				Session::addMessage("User doesn't exist or wrong password", "warning");
 			}
-
-
 		}
 
 		// TODO implement captcha after 3 attempts.

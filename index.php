@@ -16,10 +16,6 @@ $response = Handler::respond($_GET, $_POST);
 		<?php 
 			Session::showMessage();
 
-			if ($_user) {
-				echo "User '$_user->userName' is logged in.";
-			}
-
 			$response->show();
 		?>
 	</div>

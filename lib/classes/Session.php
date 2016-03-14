@@ -26,7 +26,7 @@ class Session {
 		$_SESSION['user'] = $user;
 	}
 
-	static function logUserOut($user) {
+	static function logUserOut() {
 		unset($_SESSION['user']);
 	}
 

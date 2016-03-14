@@ -16,6 +16,6 @@ DBUpgrader::checkTables();
 
 R::init();
 
-$_user = Session::getSignedInUser();
+$_signedInUser = Session::getSignedInUser();
 
 ?>

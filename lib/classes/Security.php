@@ -19,6 +19,11 @@ class Security {
 	static function encryptPassword($password, $hash) {
 		return crypt($password, "$6$" . md5($hash));
 	}
+
+	static function redirect($location) {
+		header("Location: $location");
+		die();
+	}
 }
 
 

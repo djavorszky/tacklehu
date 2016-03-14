@@ -17,7 +17,11 @@
         <li class="active"><a href="<?php echo Config::getURL()?>/blog"><?php echo R::lang("nav-link-blog") ?> <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <?php if ($_signedInUser) { ?>
+        <li><a href="<?php echo Config::getURL()?>/logout"><?php echo R::lang("nav-link-logout") ?></a></li>
+        <?php } else { ?>
         <li><a href="<?php echo Config::getURL()?>/login"><?php echo R::lang("nav-link-login") ?></a></li>
+        <?php } ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
