@@ -25,7 +25,7 @@
             ?>
           </ul>
         <?php if ($_signedInUser) { ?>
-        <li><a href="<?php echo Config::getURL()?>/logout"><?php echo R::lang("nav-link-logout") ?></a></li>
+        <li><a href="<?php echo Config::getURL()?>/logout"><?php echo Security::escapeHTML($_signedInUser->userName) ?> (<?php echo R::lang("nav-link-logout") ?>)</a></li>
         <?php } else { ?>
         <li><a href="<?php echo Config::getURL()?>/login"><?php echo R::lang("nav-link-login") ?></a></li>
         <?php } ?>
