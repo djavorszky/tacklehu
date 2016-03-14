@@ -5,7 +5,7 @@ class Blog extends SuperPage {
 	public function __construct($requestUri) {
 		$this->requestUri = $requestUri;
 
-		$this->setView("blog", "blog");
+		$this->setView("blog", "view");
 	}
 
 	// View is for viewing individual entries.
