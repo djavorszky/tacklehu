@@ -12,10 +12,13 @@
     </div>
     <div class="collapse navbar-collapse" id="collapsible-navigation">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo Config::getURL()?>/blog"><?php echo R::lang("nav-link-blog") ?> <span class="sr-only">(current)</span></a></li>
+        <?php foreach (Config::getPages() as $name => $href) {?>
+          <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL()?>/<?php echo $href ?>"><?php echo R::lang($name) ?> <span class="sr-only">(current)</span></a></li>
+        <?php } ?>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-               <li class="dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo R::lang("language")?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <?php 
