@@ -1,2 +1,2 @@
-<?php include_once('roles.php'); ?>
+<?php include_once('blog-list.php'); ?>
 
