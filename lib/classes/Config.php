@@ -29,10 +29,10 @@ class Config {
 	private static $url;
 
 	// Database settings
-	private static $db_host = "localhost";
-	private static $db_user = "root";
-	private static $db_pass = "root";
-	private static $db_database = "tacklehu";
+	private static $db_host = "";
+	private static $db_user = "";
+	private static $db_pass = "";
+	private static $db_database = "";
 
 	static function init() {
 		mb_internal_encoding("UTF-8");
@@ -40,6 +40,20 @@ class Config {
 		mb_http_input('UTF-8');
 
 		ob_start();
+
+		// You'll have to create this file and specify
+		// the below 4 variables that correspond to your
+		// database settings.
+		//
+		// This is done because db-config.php is put on
+		// .gitignore. If you don't, you'll run into a lot
+		// of errors.
+		include_once(self::$root_dir . '/lib/db-config.php');
+
+		self::$db_host = $db_host;
+		self::$db_user = $db_user;
+		self::$db_pass = $db_pass;
+		self::$db_database = $db_database;
 	}
 
 	static function printBootstrapAndJQueryResources() {
