@@ -12,9 +12,21 @@
     </div>
     <div class="collapse navbar-collapse" id="collapsible-navigation">
       <ul class="nav navbar-nav">
-        <?php foreach (Config::getPages() as $name => $href) {?>
-          <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL()?>/<?php echo $href ?>"><?php echo R::lang($name) ?> <span class="sr-only">(current)</span></a></li>
-        <?php } ?>
+        <?php 
+          foreach (Config::getPages() as $name => $href) {
+        ?>
+            <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL()?>/<?php echo $href ?>"><?php echo R::lang($name) ?></a></li>
+        <?php 
+        } 
+
+        if ($_signedInUser && Role::hasRole(Role::$role_admin, $_signedInUser->userId)) {
+          foreach (Config::getAdminPages() as $name => $href) {
+        ?>
+          <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL()?>/<?php echo $href ?>"><?php echo R::lang($name) ?></a></li>   
+        <?php 
+          }
+        }
+        ?>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">

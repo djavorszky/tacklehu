@@ -21,8 +21,6 @@ class Role {
 	public static function hasRole($role, $userId) {
 		$currentRole = DB::mqval("SELECT roleId FROM User WHERE userId = $userId");
 
-		echo "$currentRole<br>";
-
 		if (($currentRole & $role) != 0) {
 			return true;
 		} 

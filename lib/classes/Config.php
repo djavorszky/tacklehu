@@ -2,7 +2,8 @@
 
 class Config {
 	// Available pages
-	private static $pages = array("blog" => "blog", "admin" => "ow");
+	private static $pages = array("blog" => "blog");
+	private static $adminPages = array("admin" => "ow");
 
 	// Available languages
 	private static $languages = array("hungarian" => "hu", "english" => "en");
@@ -61,6 +62,10 @@ class Config {
 		self::$host = $host;
 		self::$context = $context;
 		self::$hasContext = $hasContext;
+	}
+
+	static function getAdminPages() {
+		return self::$adminPages;
 	}
 
 	static function getPages() {
