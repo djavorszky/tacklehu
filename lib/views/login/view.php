@@ -6,8 +6,9 @@ if (! $_signedInUser) {
 ?>
 
 <div class="row">
-	<div class="page-header col-sm-5 col-sm-offset-3">
-		<h1><?php echo R::lang("login-page-header")?></h1>
+	<div class="col-sm-5 col-sm-offset-3">
+		<h2><?php echo R::lang("login-page-header")?></h2>
+		<hr>
 	</div>
 </div>
 <form class="form-horizontal" action="<?php echo Config::getURL()?>/login" method="POST">

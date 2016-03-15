@@ -5,8 +5,9 @@ if (! $_signedInUser) {
 
 ?>
 <div class="row">
-	<div class="page-header col-sm-5 col-sm-offset-3">
+	<div class="col-sm-5 col-sm-offset-3">
 		<h1><?php echo R::lang("register-page-header")?></h1>
+		<hr>
 	</div>
 </div>
 <form class="form-horizontal" action="<?php echo Config::getURL()?>/register" method="POST">

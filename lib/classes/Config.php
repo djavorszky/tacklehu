@@ -51,7 +51,7 @@ class Config {
 		// This is done because db-config.php is put on
 		// .gitignore. If you don't, you'll run into a lot
 		// of errors.
-		include_once(self::$root_dir . '/lib/config-ext.php');
+		require_once(self::$root_dir . '/lib/config-ext.php');
 
 		self::$db_host = $db_host;
 		self::$db_user = $db_user;
