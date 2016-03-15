@@ -40,6 +40,8 @@ class Login extends SuperPage {
 			else {
 				Session::addMessage(R::lang("login-failed"), "warning");
 			}
+
+			Security::redirect(Config::getURL() . "/login");
 		}
 
 		// TODO implement captcha after 3 attempts.
