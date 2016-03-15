@@ -33,7 +33,8 @@ class Register extends SuperPage {
 						"emailAddress" => $postArray['email'],
 						"lastLogin" => "NOW()",
 						"registerDate" => "NOW()",
-						"code_" => $code
+						"code_" => $code,
+						"roleId" => Role::$role_user
 					);
 
 					$userId = DB::insert("User", $columns);

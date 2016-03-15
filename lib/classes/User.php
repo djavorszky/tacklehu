@@ -20,7 +20,7 @@ class User {
 			return mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE userId = $userId"));
 		}
 		else {
-			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName FROM User WHERE userId = $userId"));
+			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName, roleId FROM User WHERE userId = $userId"));
 		}
 	}
 
@@ -29,7 +29,7 @@ class User {
 			return mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE userName = '$userName'"));
 		}
 		else {
-			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName FROM User WHERE userName = '$userName'"));
+			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName, roleId FROM User WHERE userName = '$userName'"));
 		}
 	}
 
@@ -38,7 +38,7 @@ class User {
 			return mysqli_fetch_object(DB::mq("SELECT * FROM User WHERE emailAddress = '$emailAddress'"));
 		}
 		else {
-			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName FROM User WHERE emailAddress = '$emailAddress'"));
+			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName, roleId FROM User WHERE emailAddress = '$emailAddress'"));
 		}
 	}
 }
