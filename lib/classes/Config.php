@@ -1,6 +1,9 @@
 <?php
 
 class Config {
+	// Available pages
+	private static $pages = array("blog" => "blog", "admin" => "ow");
+
 	// Available languages
 	private static $languages = array("hungarian" => "hu", "english" => "en");
 
@@ -48,12 +51,20 @@ class Config {
 		// This is done because db-config.php is put on
 		// .gitignore. If you don't, you'll run into a lot
 		// of errors.
-		include_once(self::$root_dir . '/lib/db-config.php');
+		include_once(self::$root_dir . '/lib/config-ext.php');
 
 		self::$db_host = $db_host;
 		self::$db_user = $db_user;
 		self::$db_pass = $db_pass;
 		self::$db_database = $db_database;
+		self::$protocol = $protocol;
+		self::$host = $host;
+		self::$context = $context;
+		self::$hasContext = $hasContext;
+	}
+
+	static function getPages() {
+		return self::$pages;
 	}
 
 	static function printBootstrapAndJQueryResources() {
@@ -141,11 +152,6 @@ class Config {
 
 		return self::$url;
 	}
-
-	static function setHasContext($boolean) {
-		self::$hasContext = $boolean;
-		self::constructUrl();
-	} 
 
 	private function constructUrl() {
 		if (self::$hasContext) {
