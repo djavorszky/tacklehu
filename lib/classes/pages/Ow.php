@@ -50,7 +50,7 @@ class Ow extends SuperPage {
 			}
 			elseif ($postArray["action"] == "doDeleteBlogEntry") {
 				BlogEntry::delete($postArray["entryId"]);
-				Session::addMessage("Successfully deleted entry with Id " . $postArray["entryId"] . ".", "success");
+				Session::addMessage(R::lang("blog-entry-deleted", array($postArray["entryId"])), "success");
 				Security::redirect(Config::getURL() . "/ow/blog");
 			}
 		}
@@ -58,12 +58,12 @@ class Ow extends SuperPage {
 
 	private function addBlogEntry($postArray) {
 		BlogEntry::persist($postArray["title"], $postArray["content"], $postArray["userId"]);
-		Session::addMessage("Successfully added a new entry.", "success");
+		Session::addMessage(R::lang("blog-entry-added"), "success");
 	}
 
 	private function updateBlogEntry($postArray) {
 		BlogEntry::update($postArray['entryId'], $postArray["title"], $postArray["content"], $postArray["userId"]);
-		Session::addMessage("Successfully updated entry with Id " . $postArray['entryId'] . ".", "success");
+		Session::addMessage(R::lang("blog-entry-updated", array($postArray["entryId"])), "success");
 	}
 }
 

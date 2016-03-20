@@ -1,6 +1,6 @@
 
 <div class="row">
-	<a class="btn btn-primary" href="<?php echo Config::getURL()?>/ow/blog/edit">Add an entry</a>
+	<a class="btn btn-primary" href="<?php echo Config::getURL()?>/ow/blog/edit"><?php echo R::lang("add-entries") ?></a>
 </div>
 	<br>
 <div class="row">
@@ -13,12 +13,12 @@ if ($count > 0) {
 ?>
 <table class="table table-striped table-hover table-responsive">
 	<tr>
-		<th>entryId</th>
-		<th>title</th>
-		<th>author</th>
-		<th>createDate</th>
-		<th>displayDate</th>
-		<th>actions</th>
+		<th><?php echo R::lang("entry-id") ?></th>
+		<th><?php echo R::lang("title-table") ?></th>
+		<th><?php echo R::lang("author") ?></th>
+		<th><?php echo R::lang("create-date") ?></th>
+		<th><?php echo R::lang("display-date") ?></th>
+		<th><?php echo R::lang("actions") ?></th>
 	</tr>
 
 	<?php
@@ -34,9 +34,10 @@ if ($count > 0) {
 			<form class="form-inline" action="<?php echo Config::getURL()?>/ow/blog" method="POST">
 				<input type="hidden" name="action" value="doDeleteBlogEntry">
 				<input type="hidden" name="entryId" value="<?php echo $adminBlogEntryObject->getEntryId()?>">
-				<a class="btn btn-default" href="<?php echo $adminBlogEntryObject->getEditURL()?>">Edit</a>
+				<a class="btn btn-default" href="<?php echo $adminBlogEntryObject->getEditURL()?>"><?php echo R::lang("edit") ?></a>
 
-				<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+				<button type="submit" class="btn btn-danger" onclick="return confirm('<?php echo R::lang("are-you-sure-confirm") ?>')"><?php echo R::lang("delete") ?></button>
+
 			</form>
 		</td>
 	</tr>
@@ -47,7 +48,7 @@ if ($count > 0) {
 
 <?php } else { ?>
 <div class="alert alert-warning">
-	There aren't any blog entries yet.
+	<?php echo R::lang("no-blog-entries-yet"); ?>
 </div>
 <?php
 }
