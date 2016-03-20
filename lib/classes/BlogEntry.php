@@ -2,6 +2,13 @@
 
 class BlogEntry {
 
+	private $entryId;
+	private $author;
+	private $title;
+	private $content;
+	private $createDate;
+	private $displayDate;
+
 	static function persist($title, $content, $userId) {
 
 		$columns = array(
@@ -31,22 +38,30 @@ class BlogEntry {
 	}
 
 	static function getEntries($start = 0, $end = 10) {
-		
+		$limit = $end - $start;
+
+		$result = DB::mq("SELECT * FROM BlogEntry WHERE displayDate <= NOW() LIMIT $start, $limit");
+
+		return self::createReturnArray($result);
 	}
 
 	static function getAdminEntries($start = 0, $end = 30) {
 		$limit = $end - $start;
 
-		$result = DB::mq("SELECT entryId, title, authorId, createDate, displayDate FROM BlogEntry LIMIT $start, $limit");
+		$result = DB::mq("SELECT * FROM BlogEntry LIMIT $start, $limit");
 
+		return self::createReturnArray($result);
+	}
+
+	private static function createReturnArray($mysqlResult) {
 		$returnArray = array();
 
-		while ($row = mysqli_fetch_object($result)) {
-			$listEntry = new BlogEntryAdminList($row->entryId, $row->title, $row->authorId, $row->createDate, $row->displayDate);
+		while ($row = mysqli_fetch_object($mysqlResult)) {
+			$listEntry = new BlogListEntry($row->entryId, $row->title, $row->content, $row->authorId, $row->createDate, $row->displayDate);
 			$returnArray[] = $listEntry;
 		}
 
-		return $returnArray;
+		return $returnArray;		
 	}
 }
 

@@ -36,7 +36,6 @@ class Handler {
 
 		return $obj;	
 	}
-
 }
 
 ?>

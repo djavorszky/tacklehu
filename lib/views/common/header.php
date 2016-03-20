@@ -38,7 +38,7 @@
               echo "<li><a href=\"" . Config::getURL() . "/language/$longKey\">" . R::lang($longKey) . "</a></li>";
             }
             ?>
-          </ul>
+          </ul><i class="icon-flag-HU"></i>
         <?php if ($_signedInUser) { ?>
         <li><a href="<?php echo Config::getURL()?>/logout"><?php echo Security::escapeHTML($_signedInUser->userName) ?> (<?php echo R::lang("nav-link-logout") ?>)</a></li>
         <?php } else { ?>

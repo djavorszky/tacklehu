@@ -1,16 +1,18 @@
 <?php
 
-class BlogEntryAdminList {
+class BlogListEntry {
 
 	private $entryId;
 	private $title;
+	private $content;
 	private $author;
 	private $createDate;
 	private $displayDate;
 
-	public function __construct($entryId, $title, $authorId, $createDate, $displayDate) {
+	public function __construct($entryId, $title, $content, $authorId, $createDate, $displayDate) {
 		$this->entryId = $entryId;
 		$this->title = $title;
+		$this->content = $content;
 		$this->createDate = $createDate;
 		$this->displayDate = $displayDate;
 
@@ -23,6 +25,10 @@ class BlogEntryAdminList {
 
 	public function getTitle() {
 		return $this->title;
+	}
+
+	public function getContent() {
+		return $this->content;
 	}
 
 	public function getAuthor() {
@@ -39,10 +45,6 @@ class BlogEntryAdminList {
 
 	public function getEditURL() {
 		return Config::getURL() . "/ow/blog/edit/" . $this->entryId;
-	}
-
-	public function getDeleteURL() {
-		return Config::getURL() . "/ow/blog/delete/" . $this->entryId;
 	}
 }
 
