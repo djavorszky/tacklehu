@@ -5,6 +5,7 @@ abstract class SuperPage {
 	protected $component;
 	protected $view;
 	protected $requestUri;
+	protected $extraData;
 
 	public function loadView() {
 		include(Config::getRootDir() . "/lib/views/$this->component/$this->view.php");
@@ -18,6 +19,14 @@ abstract class SuperPage {
 	// Show is the default action, always. This is meant to display the default UI.
 	public function show() {
 		$this->loadView();
+	}
+
+	public function setExtraData($extraData) {
+		$this->extraData = $extraData;
+	}
+
+	public function getExtraData() {
+		return $this->extraData;
 	}
 
 	// Constructor..

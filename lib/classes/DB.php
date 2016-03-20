@@ -48,6 +48,38 @@ class DB {
 		return self::insertId();
 	}
 
+	static function update($table, $columns, $where) {
+		if (!is_array($columns) || !is_array($where)) {
+			die_hard("Update called with non-array(s).");
+		}
+
+		$updatingString = "";
+		foreach ($columns as $column => $value) {
+			if (is_numeric($value)) {
+				$processedValue = $value;
+			}
+			elseif ($value != "NOW()") {
+				$processedValue = "'" . self::escapeSQL($value) . "'";
+			}
+			else {
+				$proccessedValue = "NOW()";
+			}
+
+			$updatingString .= "$column = $processedValue, ";
+		}
+
+		$updatingString = rtrim($updatingString, ", ");
+
+		foreach ($where as $column => $value) {
+			$whereString = "$column = $value";
+		}
+
+		$query = "UPDATE $table SET $updatingString WHERE $whereString";
+
+		self::mq($query);
+
+	}
+
 	static function mq($query) {
 		$q = mysqli_query(self::$connection, $query);
 		if (!$q && debug()) {

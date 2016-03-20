@@ -24,9 +24,13 @@ class Ow extends SuperPage {
 
 	// Edit is for editing something or adding a new one.
 	public function edit($id = "") {
-		if (!$id) {
-			$this->setView("ow", "blog-edit");
+		if ($id) {
+			$result = DB::mq("SELECT entryId, title, content FROM BlogEntry WHERE entryId = $id");
+			$blogEntry = mysqli_fetch_object($result);
+			$this->setExtraData($blogEntry);
 		}
+
+		$this->setView("ow", "blog-edit");
 
 		// Otherwise get all the info from blog stuff and post it somehow or I don't know.
 	}
@@ -35,12 +39,32 @@ class Ow extends SuperPage {
 	public function action($postArray) {
 		if (sizeof($postArray) != 0 && array_key_exists("action", $postArray)) {
 			if ($postArray["action"] == "doEditBlogEntry") {
-				print_array($postArray);
-				BlogEntry::persist($postArray["title"], $postArray["content"], $postArray["userId"]);
+				if (array_key_exists("entryId", $postArray)) {
+					$this->updateBlogEntry($postArray);
+				}
+				else {
+					$this->addBlogEntry($postArray);
+				}
+
+				Security::redirect(Config::getURL() . "/ow/blog");
+			}
+			elseif ($postArray["action"] == "doDeleteBlogEntry") {
+				BlogEntry::delete($postArray["entryId"]);
+				Session::addMessage("Successfully deleted entry with Id " . $postArray["entryId"] . ".", "success");
+				Security::redirect(Config::getURL() . "/ow/blog");
 			}
 		}
 	}
 
+	private function addBlogEntry($postArray) {
+		BlogEntry::persist($postArray["title"], $postArray["content"], $postArray["userId"]);
+		Session::addMessage("Successfully added a new entry.", "success");
+	}
+
+	private function updateBlogEntry($postArray) {
+		BlogEntry::update($postArray['entryId'], $postArray["title"], $postArray["content"], $postArray["userId"]);
+		Session::addMessage("Successfully updated entry with Id " . $postArray['entryId'] . ".", "success");
+	}
 }
 
 
