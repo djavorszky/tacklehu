@@ -40,7 +40,7 @@ class BlogEntry {
 	static function getEntries($start = 0, $end = 10) {
 		$limit = $end - $start;
 
-		$result = DB::mq("SELECT * FROM BlogEntry WHERE displayDate <= NOW() LIMIT $start, $limit");
+		$result = DB::mq("SELECT * FROM BlogEntry WHERE displayDate <= NOW() ORDER BY displayDate DESC LIMIT $start, $limit");
 
 		return self::createReturnArray($result);
 	}
@@ -48,7 +48,7 @@ class BlogEntry {
 	static function getAdminEntries($start = 0, $end = 30) {
 		$limit = $end - $start;
 
-		$result = DB::mq("SELECT * FROM BlogEntry LIMIT $start, $limit");
+		$result = DB::mq("SELECT * FROM BlogEntry ORDER BY entryId DESC LIMIT $start, $limit");
 
 		return self::createReturnArray($result);
 	}

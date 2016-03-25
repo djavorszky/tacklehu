@@ -57,14 +57,29 @@ class Ow extends SuperPage {
 	}
 
 	private function addBlogEntry($postArray) {
-		BlogEntry::persist($postArray["title"], $postArray["content"], $postArray["userId"]);
+		$Parsedown = new Parsedown();
+
+		$escapedTitle = Security::escapeHTML($postArray["title"]);
+		$escapedContent = Security::escapeHTML($postArray["content"]);
+
+		$parsedEscapedContent = $Parsedown->text($escapedContent);
+
+		BlogEntry::persist($escapedTitle, $parsedEscapedContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-added"), "success");
 	}
 
 	private function updateBlogEntry($postArray) {
-		BlogEntry::update($postArray['entryId'], $postArray["title"], $postArray["content"], $postArray["userId"]);
+		$Parsedown = new Parsedown();
+
+		$escapedTitle = Security::escapeHTML($postArray["title"]);
+		$escapedContent = Security::escapeHTML($postArray["content"]);
+
+		$parsedEscapedContent = $Parsedown->text($escapedContent);
+
+		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedEscapedContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-updated", array($postArray["entryId"])), "success");
 	}
+
 }
 
 

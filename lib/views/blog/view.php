@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="col-sm-8">
+
 	<?php
 		$blogEntries = BlogEntry::getEntries();
 
