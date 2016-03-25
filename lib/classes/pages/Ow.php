@@ -13,6 +13,11 @@ class Ow extends SuperPage {
 				if (@$explodedUri[2] == "edit") {
 					$this->edit(@$explodedUri[3]);
 				}
+				else if (@$explodedUri[2] == "edit-preview") {
+					// This part is for viewing the preview of the file.
+					$this->echoPreview();
+					die();
+				}
 			}
 		}
 	}
@@ -60,11 +65,11 @@ class Ow extends SuperPage {
 		$Parsedown = new Parsedown();
 
 		$escapedTitle = Security::escapeHTML($postArray["title"]);
-		$escapedContent = Security::escapeHTML($postArray["content"]);
+//		$escapedContent = Security::escapeHTML($postArray["content"]);
 
-		$parsedEscapedContent = $Parsedown->text($escapedContent);
+		$parsedContent = $Parsedown->text($postArray["content"]);
 
-		BlogEntry::persist($escapedTitle, $parsedEscapedContent, $postArray["userId"]);
+		BlogEntry::persist($escapedTitle, $parsedContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-added"), "success");
 	}
 
@@ -72,12 +77,24 @@ class Ow extends SuperPage {
 		$Parsedown = new Parsedown();
 
 		$escapedTitle = Security::escapeHTML($postArray["title"]);
-		$escapedContent = Security::escapeHTML($postArray["content"]);
+//		$escapedContent = Security::escapeHTML($postArray["content"]);
 
-		$parsedEscapedContent = $Parsedown->text($escapedContent);
+		$parsedContent = $Parsedown->text($postArray["content"]);
 
-		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedEscapedContent, $postArray["userId"]);
+		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-updated", array($postArray["entryId"])), "success");
+	}
+
+	private function echoPreview() {
+		if (isset($_POST)) {
+			$Parsedown = new Parsedown();
+
+//			$escapedContent = Security::escapeHTML($_POST["content"]);
+
+			$parsed = $Parsedown->text($_POST["content"]);
+
+			echo $parsed;
+		}
 	}
 
 }

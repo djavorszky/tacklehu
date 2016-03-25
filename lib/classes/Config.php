@@ -19,6 +19,8 @@ class Config {
 
 	private static $jquery_local = "/res/jquery/jquery-2.2.1.min.js";
 
+	private static $custom_js = "/res/jquery/js.js";
+
 	// CDN settings
 	private static $use_cdn = false;
 
@@ -102,8 +104,10 @@ class Config {
 			echo '<link rel="stylesheet" href="' . self::getBootstrapThemeCSS() . '">';
 			echo '<link rel="stylesheet" href="' . self::getCustomCSS() . '">';
 			echo '<script src="' . self::getBootstrapJS() . '"></script>';
+			echo '<script src="' . self::getCustomJS() .'"></script>';
 		}
 	}
+
 	static function getLanguages() {
 		return self::$languages;
 	}
@@ -152,6 +156,13 @@ class Config {
 			return "/" . self::$context . self::$bootstrap_fonts_local;
 		}
 		return self::$bootstrap_fonts_local;
+	}
+
+	static function getCustomJS() {
+		if (self::$context) {
+			return "/" . self::$context . self::$custom_js;
+		}
+		return self::$custom_js;
 	}
 
 	static function useCDN() {
