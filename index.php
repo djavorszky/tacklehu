@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+$start = microtime(true);
 require_once("lib/init.php");
 
 $response = Handler::respond($_GET, $_POST);
@@ -29,4 +30,6 @@ $response = Handler::respond($_GET, $_POST);
 // This is the end.
 require_once("lib/done.php");
 
+$pageLoad = microtime(true) - $start;
+echo "Pageload: " . round($pageLoad * 1000) . " ms";
 ?>
