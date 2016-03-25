@@ -18,11 +18,13 @@ $lang = Cookie::getCookieValue("lang");
 
 if ($lang && in_array($lang, Config::getLanguages())) {
 	R::init($lang);
-	setlocale("LC_TIME", "$lang" . "_" . strtoupper($lang));
 }
 else {
 	R::init();
 }
+
+setlocale("LC_TIME", Config::getFullLocale($lang));
+
 
 $_signedInUser = Session::getSignedInUser();
 

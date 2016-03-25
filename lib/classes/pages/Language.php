@@ -8,13 +8,17 @@ class Language extends GetResponseAction {
 
 		Cookie::setCookie("lang", $languageKey, Cookie::$length_year);
 		
-		// Can't add a session message via R, because right now it's still one language.
-		// However the message will be printed when we've changed the language.
-		// So the user's going to see the message in the language of the previous
-		// selection, not the new one...
-
-		// Session::addMessage(R::lang("language-change-successful"), "success");
-
+		switch ($languageKey) {
+			case 'en':
+				$message = "Language changed successfully!";
+				break;
+			
+			default:
+				$message = "Sikeres nyelvváltás!";
+				break;
+		}
+		
+		Session::addMessage($message, "success");
 		Security::redirect(Config::getURL());
 	}
 }

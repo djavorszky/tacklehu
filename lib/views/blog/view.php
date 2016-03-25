@@ -8,12 +8,8 @@
 		?>
 		<div class="row">
 			<h2><a href="#"><?php echo $blogEntry->getTitle() ?></a></h2>
-			<p class="lead">by <a href="#"><?php echo $blogEntry->getAuthor() ?></a></p>
-			<p><span class="glyphicon glyphicon-time"></span> posted on <?php echo $blogEntry->getDisplayDate() ?></p>
-			<p><?php
-				echo Date::displayLocalDate($blogEntry->getDisplayDate());
-
-			 ?></p>
+			<p class="lead"><?php echo R::lang("posted-by") ?> <a href="#"><?php echo $blogEntry->getAuthor() ?></a></p>
+			<p><span class="glyphicon glyphicon-time"></span> <?php echo R::lang("posted-on", array(Date::getLocalDate($blogEntry->getDisplayDate()))) ?></p>
 		</div>
 		<hr>
 			<div class="col-sm-12">

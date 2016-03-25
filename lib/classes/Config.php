@@ -64,6 +64,22 @@ class Config {
 		self::$hasContext = $hasContext;
 	}
 
+	static function getFullLocale($shortNotation) {
+		switch ($shortNotation) {
+			case 'en':
+				$longNotation = "en_GB.utf8";
+				break;
+			case 'hu':
+				$longNotation = "hu_HU.utf8";
+				break;
+			default:
+				$longNotation = "en_GB.utf8";
+				break;
+		}
+
+		return $longNotation;
+	}
+
 	static function getAdminPages() {
 		return self::$adminPages;
 	}
