@@ -14,13 +14,16 @@ $response = Handler::respond($_GET, $_POST);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<?php require_once("lib/views/common/header.php"); ?>
 	<div class="container">
+		<?php require_once("lib/views/common/header.php"); ?>
+
 		<?php 
 			Session::showMessage();
 
 			$response->show();
 		?>
+
+		<?php require_once("lib/views/common/sidebar.php"); ?>
 	</div>
 </body>
 </html>
@@ -31,5 +34,5 @@ $response = Handler::respond($_GET, $_POST);
 require_once("lib/done.php");
 
 $pageLoad = microtime(true) - $start;
-echo "Pageload: " . round($pageLoad * 1000) . " ms";
+echo round($pageLoad * 1000) . " ms";
 ?>
