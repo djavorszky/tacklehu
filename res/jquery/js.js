@@ -11,3 +11,15 @@ function displayBlogPreview() {
 		$('#blog-edit-preview').html(msg);
 	});
 }
+
+
+$(document).ready(function() {
+
+	$('#content').keyup(function(e) {
+		// keyCode 13 = enter key.
+		if (e.keyCode == 13) {
+			displayBlogPreview();	
+		}
+		
+	});
+});

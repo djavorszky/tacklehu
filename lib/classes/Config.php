@@ -177,20 +177,20 @@ class Config {
 		return self::$root_dir;
 	}
 
-	static function getUrl() {
+	static function getUrl($uri = "") {
 		if (!self::$url) {
-			self::constructUrl();
+			self::constructUrl($uri);
 		}
 
-		return self::$url;
+		return self::$url . $uri;
 	}
 
-	private function constructUrl() {
+	private function constructUrl($uri) {
 		if (self::$hasContext) {
-			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context;
+			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context . $uri;
 		}
 		else {
-			self::$url = self::$protocol . "://" . self::$host;
+			self::$url = self::$protocol . "://" . self::$host . $uri;
 		}
 	}
 

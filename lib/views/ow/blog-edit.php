@@ -19,7 +19,7 @@ $blogEntry = $this->getExtraData();
 	<div class="form-group">
 		<label for="content" class="col-sm-2 control-label"><?php echo R::lang("content") ?></label>
 		<div class="col-sm-10">
-			<textarea rows="10" class="form-control" name="content" id="content" onkeyup="displayBlogPreview()" required><?php if ($blogEntry) { echo "$blogEntry->content"; } ?></textarea>
+			<textarea rows="10" class="form-control" name="content" id="content" required><?php if ($blogEntry) { echo "$blogEntry->content"; } ?></textarea>
 		</div>
 	</div>
 	<div class="form-group">
