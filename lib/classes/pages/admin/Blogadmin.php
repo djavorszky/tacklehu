@@ -6,20 +6,15 @@ class Blogadmin extends SuperPage {
 	public function __construct($uriString) {
 		$explodedUri = explode("/", $uriString);
 
-		echo "THIS WORKS.";
-
 		$this->setView("admin", "blog-list");
 
 		if (sizeof($explodedUri) > 1) {
-			if ($explodedUri[1] == "blog") {
-				if (@$explodedUri[2] == "edit") {
-					$this->edit(@$explodedUri[3]);
-				}
-				else if (@$explodedUri[2] == "edit-preview") {
-					// This part is for viewing the preview of the file.
-					$this->echoPreview();
-					die();
-				}
+			if (in_array("preview", $explodedUri)) {
+				// This part is for viewing the preview of the file.
+				$this->echoPreview();
+				die();
+			} else if (@$explodedUri[1] == "edit") {
+				$this->edit(@$explodedUri[2]);
 			}
 		}
 	}
@@ -32,14 +27,12 @@ class Blogadmin extends SuperPage {
 	// Edit is for editing something or adding a new one.
 	public function edit($id = "") {
 		if ($id) {
-			$result = DB::mq("SELECT entryId, title, content FROM BlogEntry WHERE entryId = $id");
+			$result = DB::mq("SELECT entryId, title, displayContent, rawContent FROM BlogEntry WHERE entryId = $id");
 			$blogEntry = mysqli_fetch_object($result);
 			$this->setExtraData($blogEntry);
 		}
 
 		$this->setView("admin", "blog-edit");
-
-		// Otherwise get all the info from blog stuff and post it somehow or I don't know.
 	}
 
 	// Action is to handle POST actions.
@@ -70,8 +63,9 @@ class Blogadmin extends SuperPage {
 //		$escapedContent = Security::escapeHTML($postArray["content"]);
 
 		$parsedContent = $Parsedown->text($postArray["content"]);
+		$rawContent = $postArray["content"];
 
-		BlogEntry::persist($escapedTitle, $parsedContent, $postArray["userId"]);
+		BlogEntry::persist($escapedTitle, $parsedContent, $rawContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-added"), "success");
 	}
 
@@ -82,8 +76,9 @@ class Blogadmin extends SuperPage {
 //		$escapedContent = Security::escapeHTML($postArray["content"]);
 
 		$parsedContent = $Parsedown->text($postArray["content"]);
+		$rawContent = $postArray["content"];
 
-		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedContent, $postArray["userId"]);
+		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedContent, $rawContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-updated", array($postArray["entryId"])), "success");
 	}
 
@@ -100,6 +95,5 @@ class Blogadmin extends SuperPage {
 	}
 
 }
-
 
 ?>

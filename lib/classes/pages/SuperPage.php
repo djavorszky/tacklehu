@@ -32,9 +32,6 @@ abstract class SuperPage {
 	// Constructor..
 	abstract public function __construct($uriString);
 
-	// View is for viewing individual entries.
-	abstract public function view($uriString);
-
 	// Edit is for editing something or adding a new one.
 	abstract public function edit($id = "");
 

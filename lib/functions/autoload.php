@@ -8,7 +8,7 @@ spl_autoload_register(function ($name) {
 		require_once("lib/classes/pages/$name.php");
 	}
 	elseif (file_exists("lib/classes/pages/admin/$name.php")) {
-		require_once("lib/classes/pages/$name.php");
+		require_once("lib/classes/pages/admin/$name.php");
 	}
     
 });
