@@ -10,7 +10,7 @@ $response = Handler::respond($_GET, $_POST);
 <head>
 	<title><?php echo R::lang("site-title-key") ?></title>
 	<?php Config::printBootstrapAndJQueryResources() ?>
-	<?php if (Config::isCaptchaConfigured()) { ?> 
+	<?php if (Config::isCaptchaConfigured() && Url::isCurrentPage("register")) { ?> 
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 	<?php } ?>
 	<link rel="shortcut icon" href="<?php echo Config::getURL('/res/black-letter-t.ico')?>">
