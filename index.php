@@ -23,7 +23,6 @@ $response = Handler::respond($_GET, $_POST);
 			$response->show();
 		?>
 
-		<?php require_once("lib/views/common/sidebar.php"); ?>
 	</div>
 </body>
 </html>

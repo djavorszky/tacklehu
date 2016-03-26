@@ -17,3 +17,5 @@
 
 	<?php } ?>
 </div>
+
+<?php require_once("lib/views/common/sidebar.php"); ?>
