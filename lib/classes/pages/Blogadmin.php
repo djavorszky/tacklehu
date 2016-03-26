@@ -1,23 +1,20 @@
 <?php
 
-class Ow extends SuperPage {
+class Blogadmin extends SuperPage {
 
 	// Constructor..
 	public function __construct($uriString) {
 		$explodedUri = explode("/", $uriString);
 
-		$this->setView("ow", "view");
+		$this->setView("admin", "blog-list");
 
 		if (sizeof($explodedUri) > 1) {
-			if ($explodedUri[1] == "blog") {
-				if (@$explodedUri[2] == "edit") {
-					$this->edit(@$explodedUri[3]);
-				}
-				else if (@$explodedUri[2] == "edit-preview") {
-					// This part is for viewing the preview of the file.
-					$this->echoPreview();
-					die();
-				}
+			if (in_array("preview", $explodedUri)) {
+				// This part is for viewing the preview of the file.
+				$this->echoPreview();
+				die();
+			} else if (@$explodedUri[1] == "edit") {
+				$this->edit(@$explodedUri[2]);
 			}
 		}
 	}
@@ -30,14 +27,12 @@ class Ow extends SuperPage {
 	// Edit is for editing something or adding a new one.
 	public function edit($id = "") {
 		if ($id) {
-			$result = DB::mq("SELECT entryId, title, content FROM BlogEntry WHERE entryId = $id");
+			$result = DB::mq("SELECT entryId, title, displayContent, rawContent FROM BlogEntry WHERE entryId = $id");
 			$blogEntry = mysqli_fetch_object($result);
 			$this->setExtraData($blogEntry);
 		}
 
-		$this->setView("ow", "blog-edit");
-
-		// Otherwise get all the info from blog stuff and post it somehow or I don't know.
+		$this->setView("admin", "blog-edit");
 	}
 
 	// Action is to handle POST actions.
@@ -51,12 +46,12 @@ class Ow extends SuperPage {
 					$this->addBlogEntry($postArray);
 				}
 
-				Security::redirect(Config::getURL("/ow/blog"));
+				Security::redirect(Config::getURL("/blogadmin"));
 			}
 			elseif ($postArray["action"] == "doDeleteBlogEntry") {
 				BlogEntry::delete($postArray["entryId"]);
 				Session::addMessage(R::lang("blog-entry-deleted", array($postArray["entryId"])), "success");
-				Security::redirect(Config::getURL("/ow/blog"));
+				Security::redirect(Config::getURL("/blogadmin"));
 			}
 		}
 	}
@@ -68,8 +63,9 @@ class Ow extends SuperPage {
 //		$escapedContent = Security::escapeHTML($postArray["content"]);
 
 		$parsedContent = $Parsedown->text($postArray["content"]);
+		$rawContent = $postArray["content"];
 
-		BlogEntry::persist($escapedTitle, $parsedContent, $postArray["userId"]);
+		BlogEntry::persist($escapedTitle, $parsedContent, $rawContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-added"), "success");
 	}
 
@@ -80,8 +76,9 @@ class Ow extends SuperPage {
 //		$escapedContent = Security::escapeHTML($postArray["content"]);
 
 		$parsedContent = $Parsedown->text($postArray["content"]);
+		$rawContent = $postArray["content"];
 
-		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedContent, $postArray["userId"]);
+		BlogEntry::update($postArray['entryId'], $escapedTitle, $parsedContent, $rawContent, $postArray["userId"]);
 		Session::addMessage(R::lang("blog-entry-updated", array($postArray["entryId"])), "success");
 	}
 
@@ -100,4 +97,4 @@ class Ow extends SuperPage {
 }
 
 
-?>
+?>	

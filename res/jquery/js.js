@@ -3,7 +3,7 @@ function displayBlogPreview() {
 
 	$.ajax({
 		type: "POST",
-		url: window.location.href + "-preview",
+		url: window.location.href + "/preview",
 		data: {
 			content: text
 		}

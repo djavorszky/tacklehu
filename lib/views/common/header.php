@@ -19,17 +19,19 @@
               <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL("/$href")?>"><?php echo R::lang($name) ?></a></li>
           <?php 
           } 
-
-          if ($_signedInUser && Role::hasRole(Role::$role_admin, $_signedInUser->userId)) {
+          ?>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo R::lang("admin")?> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <?php 
             foreach (Config::getAdminPages() as $name => $href) {
           ?>
             <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL("/$href")?>"><?php echo R::lang($name) ?></a></li>   
           <?php 
             }
-          }
-          ?>
-          
-        </ul>
+              ?>
+            </ul>
+          </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo R::lang("language")?> <span class="caret"></span></a>

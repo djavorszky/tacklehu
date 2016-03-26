@@ -1,0 +1,1 @@
+ALTER TABLE `BlogEntry` CHANGE COLUMN `content` `displayContent` LONGTEXT NULL DEFAULT NULL , ADD COLUMN `rawContent` LONGTEXT NULL AFTER `displayContent`;

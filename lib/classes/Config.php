@@ -3,7 +3,7 @@
 class Config {
 	// Available pages
 	private static $pages = array("blog" => "blog");
-	private static $adminPages = array("admin" => "ow");
+	private static $adminPages = array("blogadmin" => "blogadmin", "usersadmin" => "usersadmin");
 
 	// Available languages
 	private static $languages = array("hungarian" => "hu", "english" => "en");

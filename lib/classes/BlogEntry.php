@@ -9,12 +9,13 @@ class BlogEntry {
 	private $createDate;
 	private $displayDate;
 
-	static function persist($title, $content, $userId) {
+	static function persist($title, $displayContent, $rawContent, $userId) {
 
 		$columns = array(
 			"authorId" => $userId,
 			"title" => $title,
-			"content" => $content,
+			"displayContent" => $displayContent,
+			"rawContent" => $rawContent,
 			"createDate" => "NOW()",
 			"displayDate" => "NOW()"
 			);
@@ -22,11 +23,12 @@ class BlogEntry {
 		DB::insert("BlogEntry", $columns);
 	}
 
-	static function update($entryId, $title, $content, $userId) {
+	static function update($entryId, $title, $displayContent, $rawContent, $userId) {
 
 		$columns = array(
 			"title" => $title,
-			"content" => $content,
+			"displayContent" => $displayContent,
+			"rawContent" => $rawContent,
 			"authorId" => $userId
 		);
 
@@ -57,7 +59,7 @@ class BlogEntry {
 		$returnArray = array();
 
 		while ($row = mysqli_fetch_object($mysqlResult)) {
-			$listEntry = new BlogListEntry($row->entryId, $row->title, $row->content, $row->authorId, $row->createDate, $row->displayDate);
+			$listEntry = new BlogListEntry($row->entryId, $row->title, $row->displayContent, $row->authorId, $row->createDate, $row->displayDate);
 			$returnArray[] = $listEntry;
 		}
 
