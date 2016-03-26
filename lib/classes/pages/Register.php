@@ -21,29 +21,37 @@ class Register extends SuperPage {
 		if (sizeof($postArray) != 0 && array_key_exists("action", $postArray) && $postArray["action"] == "doRegister") {
 			if ($postArray['password'] == $postArray['password2']) {
 				if (! User::isNameOrEmailTaken($postArray['username'], $postArray['email'])) {
-					$code = Security::generateCode(20);
 
-					$encryptedPassword = Security::encryptPassword($postArray['password'], $code);
+					$success = CaptchaVerifier::verify($postArray["g-recaptcha-response"]);
 
-					// TODO: Implement captcha.
+					if ($success == 1) {
 
-					$columns = array(
-						"userName" => $postArray['username'],
-						"password" => $encryptedPassword,
-						"emailAddress" => $postArray['email'],
-						"lastLogin" => "NOW()",
-						"registerDate" => "NOW()",
-						"code_" => $code,
-						"roleId" => Role::$role_user
-					);
+						$code = Security::generateCode(20);
 
-					$userId = DB::insert("User", $columns);
+						$encryptedPassword = Security::encryptPassword($postArray['password'], $code);
 
-					$user = User::getUserById($userId);
+						$columns = array(
+							"userName" => $postArray['username'],
+							"password" => $encryptedPassword,
+							"emailAddress" => $postArray['email'],
+							"lastLogin" => "NOW()",
+							"registerDate" => "NOW()",
+							"code_" => $code,
+							"roleId" => Role::$role_user
+						);
 
-					Session::addMessage(R::lang("register-success", array(Security::escapeHTML($user->userName))), "success");
-					Session::logUserIn($user);
-					Security::redirect(Config::getURL());
+						$userId = DB::insert("User", $columns);
+
+						$user = User::getUserById($userId);
+
+						Session::addMessage(R::lang("register-success", array(Security::escapeHTML($user->userName))), "success");
+						Session::logUserIn($user);
+						Security::redirect(Config::getURL());
+					}
+					else {
+						Session::addMessage(R::lang("failed-captcha"), "warning");
+						Security::redirect(Config::getURL("/register"));
+					}
 				}
 				else {
 					Session::addMessage(R::lang("user-exists"), "warning");

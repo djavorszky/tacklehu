@@ -40,6 +40,11 @@ class Config {
 	private static $db_pass = "";
 	private static $db_database = "";
 
+	private static $captchaConfigured = false;
+
+	private static $captchaSiteKey = "";
+	private static $captchaSecretKey = "";
+
 	static function init() {
 		mb_internal_encoding("UTF-8");
 		mb_http_output('UTF-8');
@@ -47,23 +52,43 @@ class Config {
 
 		ob_start();
 
-		// You'll have to create this file and specify
-		// the below 4 variables that correspond to your
-		// database settings.
+		// You'll have to create a config-ext.php file
+		// and specify the below variables.
 		//
-		// This is done because db-config.php is put on
-		// .gitignore. If you don't, you'll run into a lot
-		// of errors.
+		// This is done because config-ext.php is put on
+		// .gitignore. If you don't follow these instructions, 
+		// you'll run into a lot of errors.
+
 		require_once(self::$root_dir . '/lib/config-ext.php');
 
+		// Database settings:
 		self::$db_host = $db_host;
 		self::$db_user = $db_user;
 		self::$db_pass = $db_pass;
 		self::$db_database = $db_database;
+
+		// URL settings:
 		self::$protocol = $protocol;
 		self::$host = $host;
 		self::$context = $context;
 		self::$hasContext = $hasContext;
+
+		// reCAPTCHA settings:
+		self::$captchaConfigured = $captchaConfigured;
+		self::$captchaSiteKey = $captchaSiteKey;
+		self::$captchaSecretKey = $captchaSecretKey;
+	}
+
+	static function isCaptchaConfigured() {
+		return self::$captchaConfigured;
+	}
+
+	static function getCaptchaSiteKey() {
+		return self::$captchaSiteKey;
+	}
+
+	static function getCaptchaSecretKey() {
+		return self::$captchaSecretKey;
 	}
 
 	static function getFullLocale($shortNotation) {

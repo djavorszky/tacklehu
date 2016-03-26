@@ -36,6 +36,13 @@ if (! $_signedInUser) {
 			<input type="password" class="form-control" id="password2" name="password2" placeholder="<?php echo R::lang("password-again-text")?>">
 		</div>
 	</div>
+	<?php if (Config::isCaptchaConfigured()) { ?>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-10">
+			<div class="g-recaptcha" data-sitekey="<?php echo Config::getCaptchaSiteKey() ?>"></div>
+		</div>
+	</div>
+	<?php } ?>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-10">
 			<button type="submit" class="btn btn-primary"><?php echo R::lang("register-button")?></button>
