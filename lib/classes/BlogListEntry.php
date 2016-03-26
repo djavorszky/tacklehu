@@ -44,7 +44,7 @@ class BlogListEntry {
 	}
 
 	public function getEditURL() {
-		return Config::getURL() . "/ow/blog/edit/" . $this->entryId;
+		return Config::getURL("/ow/blog/edit/" . $this->entryId);
 	}
 }
 

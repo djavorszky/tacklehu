@@ -10,7 +10,7 @@ if (! $_signedInUser) {
 		<hr>
 	</div>
 </div>
-<form class="form-horizontal" action="<?php echo Config::getURL()?>/register" method="POST">
+<form class="form-horizontal" action="<?php echo Config::getURL("/register")?>" method="POST">
 	<input type="hidden" name="action" value="doRegister">
 	<div class="form-group">
 		<label for="email" class="col-sm-2 col-sm-offset-2 control-label"><?php echo R::lang("email-text")?></label>

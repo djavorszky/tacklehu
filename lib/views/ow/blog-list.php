@@ -1,6 +1,6 @@
 
 <div class="row">
-	<a class="btn btn-primary" href="<?php echo Config::getURL()?>/ow/blog/edit"><?php echo R::lang("add-entries") ?></a>
+	<a class="btn btn-primary" href="<?php echo Config::getURL("/ow/blog/edit")?>"><?php echo R::lang("add-entries") ?></a>
 </div>
 	<br>
 <div class="row">
@@ -31,7 +31,7 @@ if ($count > 0) {
 		<td><?php echo $adminBlogEntryObject->getCreateDate() ?></td>
 		<td><?php echo $adminBlogEntryObject->getDisplayDate() ?></td>
 		<td>
-			<form class="form-inline" action="<?php echo Config::getURL()?>/ow/blog" method="POST">
+			<form class="form-inline" action="<?php echo Config::getURL("/ow/blog")?>" method="POST">
 				<input type="hidden" name="action" value="doDeleteBlogEntry">
 				<input type="hidden" name="entryId" value="<?php echo $adminBlogEntryObject->getEntryId()?>">
 				<a class="btn btn-default" href="<?php echo $adminBlogEntryObject->getEditURL()?>"><?php echo R::lang("edit") ?></a>

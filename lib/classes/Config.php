@@ -179,18 +179,18 @@ class Config {
 
 	static function getUrl($uri = "") {
 		if (!self::$url) {
-			self::constructUrl($uri);
+			self::constructUrl();
 		}
 
 		return self::$url . $uri;
 	}
 
-	private function constructUrl($uri) {
+	private function constructUrl() {
 		if (self::$hasContext) {
-			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context . $uri;
+			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context;
 		}
 		else {
-			self::$url = self::$protocol . "://" . self::$host . $uri;
+			self::$url = self::$protocol . "://" . self::$host;
 		}
 	}
 

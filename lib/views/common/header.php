@@ -15,14 +15,14 @@
         <?php 
           foreach (Config::getPages() as $name => $href) {
         ?>
-            <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL()?>/<?php echo $href ?>"><?php echo R::lang($name) ?></a></li>
+            <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL("/$href")?>"><?php echo R::lang($name) ?></a></li>
         <?php 
         } 
 
         if ($_signedInUser && Role::hasRole(Role::$role_admin, $_signedInUser->userId)) {
           foreach (Config::getAdminPages() as $name => $href) {
         ?>
-          <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL()?>/<?php echo $href ?>"><?php echo R::lang($name) ?></a></li>   
+          <li<?php echo Url::isCurrentPage($href) ? ' class="active"' : "" ?>><a href="<?php echo Config::getURL("/$href")?>"><?php echo R::lang($name) ?></a></li>   
         <?php 
           }
         }
@@ -35,14 +35,14 @@
           <ul class="dropdown-menu">
             <?php 
             foreach (Config::getLanguages() as $longKey => $shortKey) {
-              echo "<li><a href=\"" . Config::getURL() . "/language/$longKey\">" . R::lang($longKey) . "</a></li>";
+              echo "<li><a href=\"" . Config::getURL("/language/$longKey") . "\">" . R::lang($longKey) . "</a></li>";
             }
             ?>
-          </ul><i class="icon-flag-HU"></i>
+          </ul>
         <?php if ($_signedInUser) { ?>
-        <li><a href="<?php echo Config::getURL()?>/logout"><?php echo Security::escapeHTML($_signedInUser->userName) ?> (<?php echo R::lang("nav-link-logout") ?>)</a></li>
+        <li><a href="<?php echo Config::getURL("/logout")?>"><?php echo Security::escapeHTML($_signedInUser->userName) ?> (<?php echo R::lang("nav-link-logout") ?>)</a></li>
         <?php } else { ?>
-        <li><a href="<?php echo Config::getURL()?>/login"><?php echo R::lang("nav-link-login") ?></a></li>
+        <li><a href="<?php echo Config::getURL("/login")?>"><?php echo R::lang("nav-link-login") ?></a></li>
         <?php } ?>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -10,7 +10,7 @@ $response = Handler::respond($_GET, $_POST);
 <head>
 	<title><?php echo R::lang("site-title-key") ?></title>
 	<?php Config::printBootstrapAndJQueryResources() ?>
-	<link rel="shortcut icon" href="<?php echo Config::getURL()?>/res/black-letter-t.ico">
+	<link rel="shortcut icon" href="<?php echo Config::getURL('/res/black-letter-t.ico')?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

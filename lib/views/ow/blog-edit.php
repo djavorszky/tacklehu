@@ -4,7 +4,7 @@ $blogEntry = $this->getExtraData();
 ?>
 <div class="col-sm-6">
 	<h2>Edit</h2>
-<form class="form-horizontal" action="<?php echo Config::getURL()?>/ow/blog" method="POST">
+<form class="form-horizontal" action="<?php echo Config::getURL("/ow/blog")?>" method="POST">
 	<input type="hidden" name="action" value="doEditBlogEntry">
 	<?php if ($blogEntry) { ?>
 	<input type="hidden" name="entryId" value="<?php echo $blogEntry->entryId ?>">
@@ -25,7 +25,7 @@ $blogEntry = $this->getExtraData();
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<button type="submit" class="btn btn-primary"><?php if ($blogEntry) { echo R::lang("update-entry"); } else { echo R::lang("add-entry"); } ?></button>
-			<a class="btn btn-default" href="<?php echo Config::getURL()?>/ow/blog"><?php echo R::lang("cancel") ?></a>
+			<a class="btn btn-default" href="<?php echo Config::getURL("/ow/blog")?>"><?php echo R::lang("cancel") ?></a>
 		</div>
 	</div>
 </form>

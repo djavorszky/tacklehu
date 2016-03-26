@@ -47,12 +47,12 @@ class Register extends SuperPage {
 				}
 				else {
 					Session::addMessage(R::lang("user-exists"), "warning");
-					Security::redirect(Config::getURL() . "/register");
+					Security::redirect(Config::getURL("/register"));
 				}
 			}
 			else {
 				Session::addMessage(R::lang("password-mismatch"), "warning");
-				Security::redirect(Config::getURL() . "/register");
+				Security::redirect(Config::getURL("/register"));
 			}
 		}
 	}

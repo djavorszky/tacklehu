@@ -11,7 +11,7 @@ if (! $_signedInUser) {
 		<hr>
 	</div>
 </div>
-<form class="form-horizontal" action="<?php echo Config::getURL()?>/login" method="POST">
+<form class="form-horizontal" action="<?php echo Config::getURL("/login")?>" method="POST">
 	<input type="hidden" name="action" value="doLogin">
 	<div class="form-group">
 		<label for="email" class="col-sm-2 col-sm-offset-2 control-label"><?php echo R::lang("email-text")?></label>
@@ -32,7 +32,7 @@ if (! $_signedInUser) {
 	</div>
 	<div class="form-group">
 		<div class="col-sm-4 col-sm-offset-4">
-			<a href="<?php echo Config::getURL()?>/register"><?php echo R::lang("prompt-for-register")?></a>
+			<a href="<?php echo Config::getURL("/register")?>"><?php echo R::lang("prompt-for-register")?></a>
 		</div>
 	</div>
 </form>

@@ -51,12 +51,12 @@ class Ow extends SuperPage {
 					$this->addBlogEntry($postArray);
 				}
 
-				Security::redirect(Config::getURL() . "/ow/blog");
+				Security::redirect(Config::getURL("/ow/blog"));
 			}
 			elseif ($postArray["action"] == "doDeleteBlogEntry") {
 				BlogEntry::delete($postArray["entryId"]);
 				Session::addMessage(R::lang("blog-entry-deleted", array($postArray["entryId"])), "success");
-				Security::redirect(Config::getURL() . "/ow/blog");
+				Security::redirect(Config::getURL("/ow/blog"));
 			}
 		}
 	}
