@@ -27,14 +27,13 @@ $response = Handler::respond($_GET, $_POST);
 		?>
 
 	</div>
+	<?php 
+		$pageLoad = microtime(true) - $start;
+		echo round($pageLoad * 1000) . " ms";
+	?>
 </body>
 </html>
-
-
 <?php
 // This is the end.
 require_once("lib/done.php");
-
-$pageLoad = microtime(true) - $start;
-echo round($pageLoad * 1000) . " ms";
 ?>

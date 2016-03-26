@@ -8,11 +8,6 @@ class Blog extends SuperPage {
 		$this->setView("blog", "view");
 	}
 
-	// View is for viewing individual entries.
-	public function view($uriString) {
-		//TODO implement.
-	}
-
 	// Edit is for editing something or adding a new one.
 	public function edit($id = "") {
 		//TODO implement.

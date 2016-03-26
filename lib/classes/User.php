@@ -41,6 +41,14 @@ class User {
 			return mysqli_fetch_object(DB::mq("SELECT userId, userName, emailAddress, registerDate, lastLogin, firstName, lastName, roleId FROM User WHERE emailAddress = '$emailAddress'"));
 		}
 	}
+
+	static function isAdmin($user) {
+		if (Role::hasRole(Role::$role_admin, $user->userId)) {
+			return true;
+		}
+
+		return false;
+	}
 }
 
 

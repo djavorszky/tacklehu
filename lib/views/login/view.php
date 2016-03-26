@@ -27,7 +27,7 @@ if (! $_signedInUser) {
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-10">
-			<button type="submit" class="btn btn-primary"><?php echo R::lang("sign-in-button")?></button>
+			<button type="submit" class="btn btn-primary"><?php echo Icons::getIcon("login") ?> <?php echo R::lang("sign-in-button")?></button>
 		</div>
 	</div>
 	<div class="form-group">

@@ -11,7 +11,7 @@
 		</div>
 		<hr>
 		<div class="col-sm-12">
-			<p class="text-justify"><?php echo $blogEntry->getContent() ?></p>
+			<?php echo $blogEntry->getContent() ?>
 		</div>
 		<div class="row">
 			<div class="col-sm-12"><hr></div>

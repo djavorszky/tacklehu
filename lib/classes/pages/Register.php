@@ -6,11 +6,6 @@ class Register extends SuperPage {
 		$this->setView("register", "view");
 	}
 
-	// View is for viewing individual entries.
-	public function view($uriString) {
-
-	}
-
 	// Edit is for editing something or adding a new one.
 	public function edit($id = "") {
 

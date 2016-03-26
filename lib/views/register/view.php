@@ -45,7 +45,7 @@ if (! $_signedInUser) {
 	<?php } ?>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-10">
-			<button type="submit" class="btn btn-primary"><?php echo R::lang("register-button")?></button>
+			<button type="submit" class="btn btn-primary"><?php echo Icons::getIcon("register") ?> <?php echo R::lang("register-button")?></button>
 		</div>
 	</div>
 </form>
