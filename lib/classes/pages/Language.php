@@ -2,6 +2,10 @@
 
 class Language extends GetResponseAction {
 
+	public function __construct($requestUri) {
+		$this->restricted = false;
+	}
+
 	public function action($requestUri) {
 		$requestArray = explode("/", $requestUri);
 		$languageKey = Config::getLanguageKey($requestArray[1]);

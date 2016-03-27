@@ -4,6 +4,9 @@ class Blogadmin extends SuperPage {
 
 	// Constructor..
 	public function __construct($uriString) {
+		$this->restricted = true;
+		$this->requiredRole = Role::$role_admin;
+
 		$explodedUri = explode("/", $uriString);
 
 		$this->setView("admin", "blog-list");

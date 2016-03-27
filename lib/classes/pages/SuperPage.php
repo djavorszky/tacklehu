@@ -2,6 +2,8 @@
 
 abstract class SuperPage {
 
+	protected $restricted = false;
+	protected $requiredRole;
 	protected $component;
 	protected $view;
 	protected $requestUri;
@@ -27,6 +29,14 @@ abstract class SuperPage {
 
 	public function getExtraData() {
 		return $this->extraData;
+	}
+
+	public function isRestricted() {
+		return $this->restricted;
+	}
+
+	public function getRequiredRole() {
+		return $this->requiredRole;
 	}
 
 	// Constructor..

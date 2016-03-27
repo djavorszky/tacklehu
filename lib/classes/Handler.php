@@ -22,12 +22,22 @@ class Handler {
 			if (class_exists($clazz)) {
 				$obj = new $clazz($requestUri);
 
-				if ($obj INSTANCEOF GetResponseAction) {
-					$obj->action($requestUri);
+				$user = Session::getSignedInUser();
+
+				if (!$obj->isRestricted() || 
+					($obj->isRestricted() && $user && Role::hasRole($obj->getRequiredRole(), $user->userId))) {
+
+					if ($obj INSTANCEOF GetResponseAction) {
+						$obj->action($requestUri);
+					}
+					else {
+						$obj->action($postArray);
+					}	
 				}
 				else {
-					$obj->action($postArray);
+					$obj = new NotFound($requestUri);
 				}
+
 			}
 			else {
 				$obj = new NotFound($requestUri);
