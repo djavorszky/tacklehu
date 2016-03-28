@@ -9,10 +9,15 @@ $debug = true;
 require_once("functions/autoload.php");
 require_once("functions/misc.php");
 
+
+$root_dir = "/home/javdaniel/liferay/git/tacklehu";
+
+header('Content-Type: text/html; charset=utf-8');
+
 // order is important!
 Session::start();
 
-Config::init();
+Config::init($root_dir);
 
 DB::init();
 

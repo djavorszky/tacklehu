@@ -49,7 +49,7 @@ class Config {
 	// Email settings
 	private static $emailHeader = "";
 
-	static function init() {
+	static function init($root_dir) {
 		mb_internal_encoding("UTF-8");
 		mb_http_output('UTF-8');
 		mb_http_input('UTF-8');
@@ -63,7 +63,9 @@ class Config {
 		// .gitignore. If you don't follow these instructions, 
 		// you'll run into a lot of errors.
 
-		require_once(self::$root_dir . '/lib/config-ext.php');
+		require_once($root_dir . '/lib/config-ext.php');
+
+		self::$root_dir = $root_dir;
 
 		// Database settings:
 		self::$db_host = $db_host;
@@ -224,7 +226,7 @@ class Config {
 		return self::$url . $uri;
 	}
 
-	private function constructUrl() {
+	static function constructUrl() {
 		if (self::$hasContext) {
 			self::$url = self::$protocol . "://" . self::$host . "/" . self::$context;
 		}

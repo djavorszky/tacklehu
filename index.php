@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <?php
 $start = microtime(true);
 require_once("lib/init.php");
 
 $response = Handler::respond($_GET, $_POST);
 ?>
+<!DOCTYPE html>
 
 <html>
 <head>
