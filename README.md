@@ -12,6 +12,10 @@ You'll need to create lib/config-ext.php file with the following content, otherw
 	$protocol = "http or https";
 	$host = "host of your site";
 	$context = "a context, if any";
-	$hasContext = true; // if there's a contexet, set to true, false otherwise
+	$hasContext = true; // if there's a context, set to true, false otherwise
+
+	$captchaConfigured = true;
+	$captchaSiteKey = "Google reCaptcha site key";
+	$captchaSecretKey = "Google reCaptcha secret key";
 ?>
 ```
