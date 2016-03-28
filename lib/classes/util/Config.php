@@ -84,6 +84,7 @@ class Config {
 
 		// email settings:
 		self::$emailHeader = $emailHeader;
+
 	}
 
 	static function getEmailHeader() {

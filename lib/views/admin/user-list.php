@@ -3,6 +3,9 @@
 
 	$userEntries = UserEntry::getEntries();
 ?>
+
+	<a class="btn btn-primary" href="<?php echo Config::getURL("/usersadmin/edit")?>"><?php echo R::lang("add-user") ?></a>
+	<br><br>
 <table class="table table-striped table-hover table-responsive">
 	<tr>
 		<th><?php echo R::lang("user-id") ?></th>
