@@ -17,15 +17,15 @@ $response = Handler::respond($_GET, $_POST);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<?php require_once("lib/views/common/header.php"); ?>
+		<div class="container">
+			<?php 
+				Session::showMessage();
 
-		<?php 
-			Session::showMessage();
-
-			$response->show();
-		?>
-
+				$response->show();
+			?>
+		</div>
 	</div>
 	<?php 
 		$pageLoad = microtime(true) - $start;
