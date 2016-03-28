@@ -40,10 +40,14 @@ class Config {
 	private static $db_pass = "";
 	private static $db_database = "";
 
+	// Captcha settings
 	private static $captchaConfigured = false;
 
 	private static $captchaSiteKey = "";
 	private static $captchaSecretKey = "";
+
+	// Email settings
+	private static $emailHeader = "";
 
 	static function init() {
 		mb_internal_encoding("UTF-8");
@@ -77,6 +81,13 @@ class Config {
 		self::$captchaConfigured = $captchaConfigured;
 		self::$captchaSiteKey = $captchaSiteKey;
 		self::$captchaSecretKey = $captchaSecretKey;
+
+		// email settings:
+		self::$emailHeader = $emailHeader;
+	}
+
+	static function getEmailHeader() {
+		return self::$emailHeader;
 	}
 
 	static function isCaptchaConfigured() {
@@ -122,6 +133,8 @@ class Config {
 			echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">';
 			echo '<link rel="stylesheet" href="' . self::getCustomCSS() . '">';
 			echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
+			echo '<script src="' . self::getCustomJS() .'"></script>';
+
 		}
 		else {
 			echo '<script src="' . self::getJQuery() . '"></script>';
@@ -202,7 +215,7 @@ class Config {
 		return self::$root_dir;
 	}
 
-	static function getUrl($uri = "") {
+	static function getURL($uri = "") {
 		if (!self::$url) {
 			self::constructUrl();
 		}

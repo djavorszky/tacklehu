@@ -1,20 +1,22 @@
 <div class="col-sm-4 hidden-xs hidden-sm">
 	<div class="well">
 		<h2>Sidebar</h2>
-		<p>This is just a placeholder.</p>
-		<p>A lot of stuff are still coming, such as:</p>
+		<p>Ez itt csak helykitöltés..</p>
+		<p>Egy csomó cucc jön még, például:</p>
 		<ul>
-			<li>categories</li>
-			<li>tags</li>
-			<li>facebook / google integration</li>
-			<li>search</li>
-			<li>twitter / instagram integration</li>
-			<li>better design :-)</li>
-			<li>and many, many more</li>
+			<li>kategóriák</li>
+			<li>tag-ek</li>
+			<li>facebook / google integráció</li>
+			<li>keresés</li>
+			<li>twitter / instagram widgetek</li>
+			<li>jobb dizájn :-)</li>
+			<li>rss</li>
+			<li>friendly url a posztokhoz</li>
+			<li>és még sok más..</li>
 		</ul>
 	</div>
 	<div class="well">
 		<h2>src</h2>
-		<p>If you want to check the source, <a target="_blank" href="https://github.com/djavorszky/tacklehu">check here</a></p>
+		<p>Ha meg akarod nézni a forráskódot, <a target="_blank" href="https://github.com/djavorszky/tacklehu">katt ide</a></p>
 	</div>
 </div>

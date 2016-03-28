@@ -32,6 +32,11 @@ if (! $_signedInUser) {
 	</div>
 	<div class="form-group">
 		<div class="col-sm-4 col-sm-offset-4">
+			<a href="<?php echo Config::getURL("/passwordreset")?>"><?php echo R::lang("prompt-for-forgot-password")?></a>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-4 col-sm-offset-4">
 			<a href="<?php echo Config::getURL("/register")?>"><?php echo R::lang("prompt-for-register")?></a>
 		</div>
 	</div>

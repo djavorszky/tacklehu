@@ -13,7 +13,7 @@ $response = Handler::respond($_GET, $_POST);
 	<?php if (Config::isCaptchaConfigured() && Url::isCurrentPage("register")) { ?> 
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 	<?php } ?>
-	<link rel="shortcut icon" href="<?php echo Config::getURL('/res/black-letter-t.ico')?>">
+	<link rel="shortcut icon" href="<?php echo Config::getURL("/res/black-letter-t.ico")?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

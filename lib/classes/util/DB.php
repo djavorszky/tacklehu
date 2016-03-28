@@ -105,6 +105,7 @@ class DB {
 	static function escapeSQL($string) {
 		return mysqli_real_escape_string(self::$connection, $string);
 	}
+
 }
 
 

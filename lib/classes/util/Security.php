@@ -2,10 +2,10 @@
 
 class Security {
 
-	private static $availableCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789?!=";
-	private static $randMax = 63;
+	private static $availableCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+	private static $randMax = 60;
 
-	static function generateCode($length) {		
+	static function generateCode($length) {
 		$code = "";
 
 		for ($i = 0; $i < $length; $i++) {

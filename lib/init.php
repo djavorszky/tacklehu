@@ -1,5 +1,9 @@
 <?php
 
+#error_reporting(-1);
+//ini_set('display_errors', 'On');
+//set_error_handler("var_dump");
+
 $debug = true;
 
 require_once("functions/autoload.php");
@@ -20,10 +24,10 @@ if ($lang && in_array($lang, Config::getLanguages())) {
 	R::init($lang);
 }
 else {
-	R::init();
+	R::init("hu");
 }
 
-setlocale("LC_TIME", Config::getFullLocale($lang));
+setlocale(LC_TIME, Config::getFullLocale($lang));
 
 
 $_signedInUser = Session::getSignedInUser();

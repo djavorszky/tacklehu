@@ -6,7 +6,8 @@ class Icons {
 			"blogadmin" => "glyphicon glyphicon-pencil",
 			"usersadmin" => "glyphicon glyphicon-user",
 			"register" => "glyphicon glyphicon-plus",
-			"login" => "glyphicon glyphicon-lock"
+			"login" => "glyphicon glyphicon-lock",
+			"reset-pw" => "glyphicon glyphicon-repeat"
 		);
 
 	static function getIcon($resource) {
